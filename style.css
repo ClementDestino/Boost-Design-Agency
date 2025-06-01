@@ -1,4 +1,4 @@
-/* style.css - Design moderne et Responsive (FINAL V2 avec Hamburger Menu) */
+/* style.css - Design moderne et Responsive (FINAL V3 - Correction Pages Projet) */
 
 /* ======================================= */
 /* ====== Import des Polices Google ====== */
@@ -29,6 +29,9 @@
     /* Rayons des bords */
     --border-radius: 8px;
     --box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+    /* Hauteur du header fixe - ajustée pour les pages secondaires */
+    --fixed-header-height: 80px; /* Une valeur généreuse pour le desktop */
 }
 
 body {
@@ -174,7 +177,6 @@ a:hover {
     left: 0;
     z-index: 1000;
     box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-    /* Retiré min-height ici, le JS gérera la hauteur du hero */
     display: flex;
     align-items: center;
 }
@@ -199,16 +201,16 @@ a:hover {
     color: var(--color-primary);
 }
 
-/* Styles pour le bouton hamburger */
+/* Styles pour le bouton hamburger (caché par défaut sur les pages de projet) */
 .hamburger-menu {
-    display: none; /* Caché par défaut sur les grands écrans */
+    display: none; /* Caché par défaut */
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 10px;
     position: relative;
-    z-index: 1001; /* Au-dessus de la nav */
-    margin-right: 10px; /* Petit espace avec le bord */
+    z-index: 1001;
+    margin-right: 10px;
 }
 
 .hamburger-menu .bar {
@@ -220,7 +222,6 @@ a:hover {
     transition: all 0.3s ease-in-out;
 }
 
-/* Animation du hamburger en croix */
 .hamburger-menu.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -233,7 +234,7 @@ a:hover {
 
 
 /* Navigation principale */
-.main-nav ul {
+.main-nav ul { /* Changement de nav ul à .main-nav ul pour être plus spécifique avec HTML */
     list-style: none;
     margin: 0;
     padding: 0;
@@ -258,6 +259,23 @@ a:hover {
     text-decoration: none;
 }
 
+/* ======================================= */
+/* ====== Padding de compensation pour le header fixe ====== */
+/* ======================================= */
+
+/* Pour les sections qui commencent directement après le header (comme #hero) */
+#hero {
+    /* Sur index.html, le padding-top de #hero est géré par JS */
+    /* Assurez une valeur par défaut minimale pour les pages qui n'ont pas de JS dynamique */
+    padding-top: var(--fixed-header-height); 
+}
+
+/* Pour le contenu principal de TOUTES les autres pages (pages de projet, etc.) */
+/* Cela pousse le contenu sous le header fixe */
+main {
+    padding-top: var(--fixed-header-height); /* Compensation pour le header fixe */
+}
+
 
 /* ======================================= */
 /* ============== Hero Section =========== */
@@ -272,8 +290,6 @@ a:hover {
     justify-content: center;
     min-height: 100vh;
     position: relative;
-    /* Le padding-top sera ajusté par JavaScript */
-    padding-top: 0;
 }
 
 #hero::before {
@@ -620,35 +636,37 @@ a:hover {
 
     .section-padding { padding: var(--spacing-md) 0; }
 
-    /* Header et Navigation */
+    /* Header et Navigation sur index.html (page principale) */
+    /* Ces styles s'appliquent seulement quand le hamburger est actif, sinon le menu est caché */
     #site-header .container {
         flex-direction: row; /* Garde le logo et le hamburger sur la même ligne */
         justify-content: space-between; /* Espace le logo du hamburger */
         align-items: center;
     }
 
-    /* Afficher le bouton hamburger */
-    .hamburger-menu {
-        display: block; /* Visible sur mobile */
+    /* Afficher le bouton hamburger sur index.html */
+    /* Important: Pour les pages de projet, le hamburger reste caché */
+    body.index-page .hamburger-menu {
+        display: block; /* Visible sur mobile, uniquement sur index.html */
     }
 
-    /* Cacher la navigation par défaut sur mobile */
-    .main-nav ul {
+    /* Cacher la navigation par défaut sur mobile (pour toutes les pages) */
+    .main-nav ul { /* Cible spécifiquement la navigation principale */
         display: none;
-        flex-direction: column; /* Pour afficher en colonne quand actif */
+        flex-direction: column;
         position: absolute;
-        top: 100%; /* Juste en dessous du header */
+        top: 100%;
         left: 0;
         width: 100%;
-        background-color: var(--color-dark); /* Même fond que le header */
+        background-color: var(--color-dark);
         box-shadow: 0 5px 10px rgba(0,0,0,0.3);
         padding: 20px 0;
         text-align: center;
     }
 
-    /* Afficher la navigation quand la classe 'active' est présente */
-    .main-nav ul.active {
-        display: flex; /* Affiche les éléments en colonne */
+    /* Afficher la navigation quand la classe 'active' est présente (uniquement sur index.html) */
+    body.index-page .main-nav ul.active {
+        display: flex;
     }
 
     .main-nav ul li {
@@ -662,16 +680,16 @@ a:hover {
     .main-nav ul li a {
         padding: 10px 0;
         font-size: 1em;
-        display: block; /* Pour que le padding et la zone de clic soient étendus */
+        display: block;
     }
     .main-nav ul li a:hover {
         background-color: var(--color-primary);
     }
 
-    /* Hero Section - Ajustement du padding-top pour compenser la hauteur du header (gérée par JS) */
+    /* Hero Section - Padding-top sera géré par JS sur index.html */
     #hero {
         min-height: 70vh;
-        padding-top: 0; /* Le JS gérera cette valeur dynamiquement */
+        padding-top: 0; /* JS sur index.html override ça */
     }
     #hero .hero-content {
         padding: var(--spacing-lg) var(--spacing-sm);
@@ -681,6 +699,12 @@ a:hover {
     }
     #hero .hero-content p {
         font-size: 1.1em;
+    }
+
+    /* POUR TOUTES LES PAGES, y compris les pages de projet */
+    /* Ajustement du padding-top de main pour compenser le header en mobile */
+    main {
+        padding-top: calc(var(--fixed-header-height) * 1.5); /* Augmenté pour les mobiles */
     }
 
     /* Grilles (Compétences & Portfolio) */
@@ -736,5 +760,10 @@ a:hover {
     .contact-form input[type="email"],
     .contact-form textarea {
         padding: 12px;
+    }
+
+    /* Ajustement spécifique pour les pages de projet sur très petit écran */
+    main {
+        padding-top: calc(var(--fixed-header-height) * 1.8); /* Encore plus de padding sur très petit */
     }
 }
