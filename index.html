@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-    <div id="page-container">
+<body id="index-page"> <div id="page-container">
         <header id="site-header">
             <div class="container">
                 <a href="#hero" class="logo">Boost Design Agency</a>
@@ -17,7 +16,8 @@
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </button>
-                <nav class="main-nav"> <ul>
+                <nav class="main-nav">
+                    <ul>
                         <li><a href="#hero">Accueil</a></li>
                         <li><a href="#about">À Propos</a></li>
                         <li><a href="#skills">Compétences</a></li>
@@ -173,31 +173,39 @@
             const navMenu = document.querySelector('.main-nav ul');
             const header = document.getElementById('site-header');
             const heroSection = document.getElementById('hero');
+            const body = document.body; // Récupère la balise body
 
             function adjustHeroPadding() {
-                const headerHeight = header.offsetHeight;
-                heroSection.style.paddingTop = headerHeight + 'px';
+                // Seulement si nous sommes sur la page d'accueil avec le menu hamburger
+                if (body.id === 'index-page') {
+                    const headerHeight = header.offsetHeight;
+                    // Si le menu est ouvert, la hauteur du header sera plus grande
+                    // Le padding doit compenser la hauteur du header quand il est 'fixe'
+                    heroSection.style.paddingTop = headerHeight + 'px';
+                }
             }
 
-            hamburger.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-                hamburger.classList.toggle('active'); // Pour l'animation du hamburger
-                // Ajuster le padding du hero après l'ouverture/fermeture du menu
-                adjustHeroPadding();
-            });
-
-            // Fermer le menu si on clique sur un lien (utile sur mobile)
-            navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                        hamburger.classList.remove('active');
-                        adjustHeroPadding(); // Réajuster après la fermeture
-                    }
+            // Seulement ajouter l'écouteur d'événements pour le hamburger si nous sommes sur la page d'accueil
+            if (body.id === 'index-page' && hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    adjustHeroPadding(); // Ajuster après l'ouverture/fermeture
                 });
-            });
 
-            // Ajuster le padding du hero au chargement et au redimensionnement
+                // Fermer le menu si on clique sur un lien
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            hamburger.classList.remove('active');
+                            adjustHeroPadding(); // Réajuster après la fermeture
+                        }
+                    });
+                });
+            }
+
+            // Ajuster le padding au chargement et au redimensionnement (pour index.html)
             window.addEventListener('load', adjustHeroPadding);
             window.addEventListener('resize', adjustHeroPadding);
         });
