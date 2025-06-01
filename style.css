@@ -643,42 +643,40 @@ main {
 
     #site-header .container {
         flex-direction: row;
-        justify-content: center; /* Centrera les éléments */
+        justify-content: space-between; /* Garde le logo et hamburger séparés */
         position: relative; /* Pour positionner le hamburger */
         align-items: center;
-        /* Augmentez l'espace des côtés pour le hamburger */
-        padding: 0 var(--spacing-sm); /* Retour à un padding standard, nous allons gérer l'espace différemment */
+        padding: 0 var(--spacing-sm); /* Retour à un padding standard */
     }
 
     /* Styles pour le bouton hamburger (visible seulement sur index.html) */
     #index-page .hamburger-menu {
         display: block; /* Affiche le hamburger sur la page d'accueil */
-        position: absolute; /* Positionne le hamburger pour ne pas interférer avec le centrage du logo */
-        right: var(--spacing-sm); /* Marge à droite du header */
-        top: 50%;
-        transform: translateY(-50%); /* Centrage vertical */
-        margin-right: 0; 
+        position: static; /* Retire le positionnement absolu pour flexbox */
+        /* right: var(--spacing-sm); */ /* Non nécessaire avec flexbox */
+        /* top: 50%; */ /* Non nécessaire avec flexbox */
+        /* transform: translateY(-50%); */ /* Non nécessaire avec flexbox */
+        margin-left: auto; /* Pousse le hamburger à l'extrême droite du container */
         z-index: 1001; 
     }
 
     /* Ajustement du logo pour s'assurer qu'il ne chevauche pas le hamburger */
     #site-header .logo {
-        /* On ne veut plus de marge-droite fixe qui pourrait pousser le texte */
-        /* La largeur maximale sera gérée par la taille de la police et le flexbox */
         margin-right: 0; /* Annule la marge que vous aviez potentiellement mise */
-        text-align: center; /* Pour centrer le texte du logo si c'est un block */
+        text-align: left; /* Aligne le texte à gauche si c'est un block */
         white-space: nowrap; /* Empêche le texte de se casser sur plusieurs lignes */
         overflow: hidden; /* Cache le texte si ça déborde */
         text-overflow: ellipsis; /* Ajoute des points de suspension si ça déborde */
         /* Nouvelle règle: Réduire la taille de la police du logo pour mobile */
         font-size: 1.2em; /* Réduit la taille pour qu'elle tienne mieux */
         /* Limite la largeur de l'élément logo pour éviter le chevauchement avec le hamburger */
-        /* Nous allons calculer cela dynamiquement pour laisser de l'espace */
-        max-width: calc(100% - (2 * var(--spacing-sm) + 60px)); /* Largeur totale du container - (2*padding) - (largeur hamburger + marge) */
-        /* 2 * var(--spacing-sm) : padding du container (gauche et droite)
-            60px : estimation de la largeur du bouton hamburger (25px bar + 2*10px padding + un peu de marge)
-        */
+        /* Nous allons le gérer en fixant une largeur plus simple ou en laissant le flexbox faire le travail */
+        /* Ancien: max-width: calc(100% - (2 * var(--spacing-sm) + 60px)); */
+        /* Nouveau: Essayer de ne pas le limiter trop directement, la font-size devrait aider */
+        max-width: 65%; /* Limite le logo pour laisser de la place au burger, ajustez cette valeur */
+        min-width: unset; /* Assurez-vous qu'il n'y a pas de min-width qui le force à être trop large */
     }
+
 
     /* Navigation principale (masquée par défaut sur mobile) */
     .main-nav ul {
@@ -781,7 +779,8 @@ main {
     /* Ajustement supplémentaire de la taille de la police du logo pour les très petits écrans */
     #site-header .logo {
         font-size: 1em; /* Encore plus petit pour s'assurer que "Boost Design Agency" tienne */
-        max-width: calc(100% - (2 * var(--spacing-sm) + 50px)); /* Ajuste légèrement la largeur max si besoin */
+        /* Ajustez la max-width pour ces écrans très petits, ou laissez la font-size faire le travail */
+        max-width: 60%; /* Ou même un peu moins si nécessaire */
     }
 
     /* Ajustement de la taille du hamburger pour les très petits écrans si nécessaire */
