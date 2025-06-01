@@ -1,4 +1,4 @@
-/* style.css - Design moderne et Responsive (FINAL V3 - Correction Pages Projet) */
+/* style.css - Design moderne et Responsive (FINAL V4 - Correction Complète) */
 
 /* ======================================= */
 /* ====== Import des Polices Google ====== */
@@ -30,8 +30,9 @@
     --border-radius: 8px;
     --box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 
-    /* Hauteur du header fixe - ajustée pour les pages secondaires */
-    --fixed-header-height: 80px; /* Une valeur généreuse pour le desktop */
+    /* Hauteur estimée du header fixe */
+    --desktop-header-height: 80px;
+    --mobile-header-height: 60px; /* Estimé pour le header mobile sans menu ouvert */
 }
 
 body {
@@ -179,6 +180,7 @@ a:hover {
     box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
+    height: var(--desktop-header-height); /* Hauteur fixe pour desktop */
 }
 
 #site-header .container {
@@ -201,9 +203,9 @@ a:hover {
     color: var(--color-primary);
 }
 
-/* Styles pour le bouton hamburger (caché par défaut sur les pages de projet) */
+/* Styles pour le bouton hamburger */
 .hamburger-menu {
-    display: none; /* Caché par défaut */
+    display: none; /* Caché par défaut sur les grands écrans */
     background: transparent;
     border: none;
     cursor: pointer;
@@ -222,6 +224,7 @@ a:hover {
     transition: all 0.3s ease-in-out;
 }
 
+/* Animation du hamburger en croix */
 .hamburger-menu.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -232,9 +235,8 @@ a:hover {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-
 /* Navigation principale */
-.main-nav ul { /* Changement de nav ul à .main-nav ul pour être plus spécifique avec HTML */
+.main-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -264,31 +266,30 @@ a:hover {
 /* ======================================= */
 
 /* Pour les sections qui commencent directement après le header (comme #hero) */
+/* C'est la valeur par défaut. Le JS sur index.html l'écrasera. */
 #hero {
-    /* Sur index.html, le padding-top de #hero est géré par JS */
-    /* Assurez une valeur par défaut minimale pour les pages qui n'ont pas de JS dynamique */
-    padding-top: var(--fixed-header-height); 
+    padding-top: var(--desktop-header-height); /* Compensation pour le header fixe */
+    min-height: 100vh; /* S'assure que la section prend toute la hauteur disponible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Pour le contenu principal de TOUTES les autres pages (pages de projet, etc.) */
 /* Cela pousse le contenu sous le header fixe */
 main {
-    padding-top: var(--fixed-header-height); /* Compensation pour le header fixe */
+    padding-top: var(--desktop-header-height); /* Compensation pour le header fixe */
 }
 
 
 /* ======================================= */
 /* ============== Hero Section =========== */
 /* ======================================= */
-
+/* Styles spécifiques pour le hero - principalement au-dessus */
 #hero {
     background: url('https://source.unsplash.com/random/1920x1080?web-development,technology') no-repeat center center/cover;
     color: var(--color-white);
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
     position: relative;
 }
 
@@ -636,26 +637,28 @@ main {
 
     .section-padding { padding: var(--spacing-md) 0; }
 
-    /* Header et Navigation sur index.html (page principale) */
-    /* Ces styles s'appliquent seulement quand le hamburger est actif, sinon le menu est caché */
+    /* Header et Navigation MOBILE */
+    #site-header {
+        height: var(--mobile-header-height); /* Hauteur réduite pour mobile */
+    }
+
     #site-header .container {
-        flex-direction: row; /* Garde le logo et le hamburger sur la même ligne */
-        justify-content: space-between; /* Espace le logo du hamburger */
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
     }
 
-    /* Afficher le bouton hamburger sur index.html */
-    /* Important: Pour les pages de projet, le hamburger reste caché */
-    body.index-page .hamburger-menu {
-        display: block; /* Visible sur mobile, uniquement sur index.html */
+    /* Styles pour le bouton hamburger (visible seulement sur index.html) */
+    #index-page .hamburger-menu {
+        display: block; /* Affiche le hamburger sur la page d'accueil */
     }
 
-    /* Cacher la navigation par défaut sur mobile (pour toutes les pages) */
-    .main-nav ul { /* Cible spécifiquement la navigation principale */
-        display: none;
-        flex-direction: column;
+    /* Navigation principale (masquée par défaut sur mobile) */
+    .main-nav ul {
+        display: none; /* Cacher le menu par défaut */
+        flex-direction: column; /* Afficher en colonne quand visible */
         position: absolute;
-        top: 100%;
+        top: var(--mobile-header-height); /* Juste en dessous du header réduit */
         left: 0;
         width: 100%;
         background-color: var(--color-dark);
@@ -664,9 +667,11 @@ main {
         text-align: center;
     }
 
-    /* Afficher la navigation quand la classe 'active' est présente (uniquement sur index.html) */
-    body.index-page .main-nav ul.active {
-        display: flex;
+    /* Afficher la navigation quand la classe 'active' est présente (seulement sur index.html) */
+    #index-page .main-nav ul.active {
+        display: flex; /* Affiche les éléments en colonne */
+        top: var(--desktop-header-height); /* Pour que le menu s'ouvre sous le header plein */
+        /* La hauteur du header change quand le menu s'ouvre, le JS s'en charge */
     }
 
     .main-nav ul li {
@@ -686,25 +691,16 @@ main {
         background-color: var(--color-primary);
     }
 
-    /* Hero Section - Padding-top sera géré par JS sur index.html */
-    #hero {
+    /* Hero Section sur index.html - Le padding-top est géré par JS */
+    #index-page #hero {
         min-height: 70vh;
-        padding-top: 0; /* JS sur index.html override ça */
-    }
-    #hero .hero-content {
-        padding: var(--spacing-lg) var(--spacing-sm);
-    }
-    #hero .hero-content h1 {
-        font-size: 2.5em;
-    }
-    #hero .hero-content p {
-        font-size: 1.1em;
+        padding-top: 0; /* Le JS le réglera */
     }
 
-    /* POUR TOUTES LES PAGES, y compris les pages de projet */
-    /* Ajustement du padding-top de main pour compenser le header en mobile */
+    /* POUR TOUTES LES PAGES (y compris les pages de projet) */
+    /* Ajustement du padding-top de main pour compenser le header en mode mobile */
     main {
-        padding-top: calc(var(--fixed-header-height) * 1.5); /* Augmenté pour les mobiles */
+        padding-top: calc(var(--mobile-header-height) + 20px); /* Hauteur du header + un peu d'espace */
     }
 
     /* Grilles (Compétences & Portfolio) */
@@ -764,6 +760,6 @@ main {
 
     /* Ajustement spécifique pour les pages de projet sur très petit écran */
     main {
-        padding-top: calc(var(--fixed-header-height) * 1.8); /* Encore plus de padding sur très petit */
+        padding-top: calc(var(--mobile-header-height) + 30px); /* Plus de padding sur très petit */
     }
 }
