@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenPlate - Maquette UI/UX - Projet Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour les pages de projet */
+        .project-detail-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .project-detail-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-detail-container h1 {
+            font-size: 2.8em;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .project-detail-container h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center; /* Centré */
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-detail-container p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .project-tech-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            text-align: left;
+        }
+        .project-tech-list li {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .project-detail-container ul {
+            padding-left: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .project-detail-container ul li {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .project-links {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .project-links .btn-primary,
+        .project-links .btn-secondary {
+            margin: 0 15px;
+        }
+
+        .back-to-portfolio {
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+        .back-to-portfolio:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .back-to-portfolio::before {
+            content: '← ';
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .project-detail-container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+            .project-detail-container h1 {
+                font-size: 2em;
+            }
+            .project-detail-container h2 {
+                font-size: 1.5em;
+            }
+            .project-links .btn-primary,
+            .project-links .btn-secondary {
+                display: block;
+                width: 90%;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">Boost Design Agency</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#hero">Accueil</a></li>
+                    <li><a href="index.html#about">À Propos</a></li>
+                    <li><a href="index.html#skills">Compétences</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container project-detail-container">
+            <a href="index.html#portfolio" class="back-to-portfolio">Retour au Portfolio</a>
+
+            <h1>Projet : Maquette UI/UX App Mobile "GreenPlate"</h1>
+
+            <img src="https://via.placeholder.com/800x500?text=Maquette+GreenPlate+App" alt="Capture d'écran de la maquette UI/UX GreenPlate">
+
+            <h2>Contexte et Objectif</h2>
+            <p>J'ai réalisé ce projet de conception UI/UX pour "GreenPlate", une startup fictive de livraison de repas sains et écologiques. L'objectif était de créer une maquette d'application mobile (iOS/Android) dont l'interface utilisateur serait à la fois intuitive, esthétique et en phase avec les valeurs de fraîcheur et de simplicité de la marque.</p>
+
+            <h2>Démarche et Réalisation</h2>
+            <p>Le processus a commencé par une phase de recherche utilisateur et la définition des "user flows" (parcours utilisateur) clés pour garantir une expérience fluide. J'ai ensuite élaboré des wireframes (schémas filaires) pour structurer l'information, puis des mockups (maquettes visuelles) détaillés en tenant compte des principes d'ergonomie mobile.</p>
+            <p>Une attention particulière a été portée à la lisibilité, à la hiérarchie visuelle de l'information, et à l'utilisation d'une palette de couleurs et d'une typographie qui évoquent la santé et la nature. Le but était de simplifier au maximum le processus de commande et d'interaction avec l'application.</p>
+
+            <h2>Technologies / Outils Utilisés</h2>
+            <ul class="project-tech-list">
+                <li>Figma / Adobe XD (Outils de conception UI/UX)</li>
+                <li>Principes de Design Centré Utilisateur (DCU)</li>
+                <li>Guidelines iOS Human Interface / Material Design (Android)</li>
+                <li>(Optionnel : Miro pour les wireframes collaboratifs)</li>
+            </ul>
+
+            <h2>Fonctionnalités Clés de la Maquette</h2>
+            <ul>
+                <li>Navigation Simple et Claire : Accès rapide aux sections principales.</li>
+                <li>Parcours de Commande Intuitif : Réduction du nombre d'étapes pour valider une commande.</li>
+                <li>Visuels de Plats Attrayants : Mise en valeur des produits par des images de qualité.</li>
+                <li>Personnalisation Facile : Options claires pour modifier les repas.</li>
+                <li>Suivi de Commande en Temps Réel : Interface pour suivre l'état de la livraison.</li>
+                <li>Profil Utilisateur Complet : Gestion des informations personnelles et de l'historique.</li>
+                <li>Design Cohérent et Épuré : Reflète l'identité de marque.</li>
+            </ul>
+
+            <div class="project-links">
+                <a href="#" target="_blank" class="btn-primary">Voir la Maquette (Figma/XD)</a>
+                <a href="#" target="_blank" class="btn-secondary">Plus de Détails (Behance/Dribbble)</a>
+            </div>
+        </div>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Clément LOKOSSOU. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
