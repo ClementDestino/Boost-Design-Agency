@@ -1,4 +1,4 @@
-/* style.css - Design moderne et Responsive (FINAL V4 - Correction Complète) */
+/* style.css - Design moderne et Responsive (FINAL V6 - Centrage Logo Mobile + Fix Burger Chevauchement) */
 
 /* ======================================= */
 /* ====== Import des Polices Google ====== */
@@ -185,7 +185,7 @@ a:hover {
 
 #site-header .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Logo à gauche, nav à droite sur desktop */
     align-items: center;
     width: 100%;
 }
@@ -211,8 +211,7 @@ a:hover {
     cursor: pointer;
     padding: 10px;
     position: relative;
-    z-index: 1001;
-    margin-right: 10px;
+    z-index: 1001; /* S'assure qu'il est toujours au-dessus */
 }
 
 .hamburger-menu .bar {
@@ -266,7 +265,7 @@ a:hover {
 /* ======================================= */
 
 /* Pour les sections qui commencent directement après le header (comme #hero) */
-/* C'est la valeur par défaut. Le JS sur index.html l'écrasera. */
+/* C'est la valeur par défaut. Le JS sur index.html l'écrasera dynamiquement. */
 #hero {
     padding-top: var(--desktop-header-height); /* Compensation pour le header fixe */
     min-height: 100vh; /* S'assure que la section prend toute la hauteur disponible */
@@ -644,13 +643,35 @@ main {
 
     #site-header .container {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center; /* Centrera les éléments */
+        position: relative; /* Pour positionner le hamburger */
         align-items: center;
+        /* Ajout d'un padding horizontal pour laisser de la place au hamburger */
+        padding: 0 calc(var(--spacing-md) + 40px); /* Augmentez l'espace des côtés pour le hamburger */
     }
 
     /* Styles pour le bouton hamburger (visible seulement sur index.html) */
     #index-page .hamburger-menu {
         display: block; /* Affiche le hamburger sur la page d'accueil */
+        position: absolute; /* Positionne le hamburger pour ne pas interférer avec le centrage du logo */
+        right: var(--spacing-sm); /* Marge à droite du header */
+        top: 50%;
+        transform: translateY(-50%); /* Centrage vertical */
+        margin-right: 0; /* Annule la marge par défaut si elle existe */
+        z-index: 1001; /* Assurez-vous qu'il soit au-dessus du logo si besoin */
+    }
+
+    /* Ajustement du logo pour s'assurer qu'il ne chevauche pas le hamburger */
+    #site-header .logo {
+        position: relative;
+        /* Ajoutez une marge droite pour le logo quand le hamburger est à sa droite */
+        /* Ceci est un ajustement pour éviter le chevauchement avec le hamburger */
+        margin-right: 40px; /* Espace pour le hamburger */
+        text-align: center; /* Pour centrer le texte du logo si c'est un block */
+        white-space: nowrap; /* Empêche le texte de se casser sur plusieurs lignes */
+        overflow: hidden; /* Cache le texte si ça déborde (très peu probable avec nowrap) */
+        text-overflow: ellipsis; /* Ajoute des points de suspension si ça déborde */
+        max-width: calc(100% - 120px); /* Réduit la largeur max pour laisser de la place au hamburger */
     }
 
     /* Navigation principale (masquée par défaut sur mobile) */
@@ -670,8 +691,7 @@ main {
     /* Afficher la navigation quand la classe 'active' est présente (seulement sur index.html) */
     #index-page .main-nav ul.active {
         display: flex; /* Affiche les éléments en colonne */
-        top: var(--desktop-header-height); /* Pour que le menu s'ouvre sous le header plein */
-        /* La hauteur du header change quand le menu s'ouvre, le JS s'en charge */
+        /* Le top sera ajusté par le JS pour s'adapter à la hauteur du header déplié */
     }
 
     .main-nav ul li {
