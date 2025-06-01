@@ -1,4 +1,4 @@
-/* style.css - Design moderne et Responsive (FINAL) */
+/* style.css - Design moderne et Responsive (FINAL V2 avec Hamburger Menu) */
 
 /* ======================================= */
 /* ====== Import des Polices Google ====== */
@@ -29,11 +29,6 @@
     /* Rayons des bords */
     --border-radius: 8px;
     --box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-
-    /* Hauteur du header pour compensation (ajustée pour les écrans larges) */
-    --header-height-desktop: 60px; 
-    /* Hauteur du header pour compensation (ajustée pour les mobiles) */
-    --header-height-mobile: 180px; /* Augmenté pour compenser le menu mobile en colonne */
 }
 
 body {
@@ -171,17 +166,16 @@ a:hover {
 /* ======================================= */
 
 #site-header {
-    background-color: var(--color-dark); /* Garder le bleu très foncé pour un look pro */
-    padding: 8px 0; /* Encore réduit pour un menu très compact */
+    background-color: var(--color-dark);
+    padding: 8px 0;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
     box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-    /* Ajout d'une hauteur minimale pour s'assurer qu'elle est cohérente */
-    min-height: var(--header-height-desktop);
-    display: flex; /* Utiliser flexbox pour centrer le contenu verticalement */
+    /* Retiré min-height ici, le JS gérera la hauteur du hero */
+    display: flex;
     align-items: center;
 }
 
@@ -189,13 +183,13 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* S'assurer que le conteneur prend toute la largeur disponible */
+    width: 100%;
 }
 
 #site-header .logo {
     color: var(--color-white);
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.6em; /* Taille de police du logo encore plus réduite */
+    font-size: 1.6em;
     font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -205,27 +199,61 @@ a:hover {
     color: var(--color-primary);
 }
 
-#site-header nav ul {
+/* Styles pour le bouton hamburger */
+.hamburger-menu {
+    display: none; /* Caché par défaut sur les grands écrans */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001; /* Au-dessus de la nav */
+    margin-right: 10px; /* Petit espace avec le bord */
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--color-white);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation du hamburger en croix */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* Navigation principale */
+.main-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    gap: 20px; /* Espacement fixe pour un contrôle précis */
+    display: flex; /* Flex par défaut pour les grands écrans */
+    gap: 20px;
 }
 
-#site-header nav ul li a {
-    color: #aebfd6; /* Couleur des liens par default, légèrement plus claire que le fond */
+.main-nav ul li a {
+    color: #aebfd6;
     text-decoration: none;
-    padding: 5px 12px; /* Padding très réduit pour les liens */
-    font-size: 0.85em; /* Taille de police des liens très réduite */
-    font-weight: 600; /* Ajout d'un poids de police pour la clarté */
+    padding: 5px 12px;
+    font-size: 0.85em;
+    font-weight: 600;
     transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
-    border-radius: var(--border-radius); /* Conserver les bords arrondis pour la modernité */
+    border-radius: var(--border-radius);
 }
 
-#site-header nav ul li a:hover,
-#site-header nav ul li a.active { /* Ajout d'une classe active pour l'élément courant */
-    background-color: var(--color-primary); /* Bleu primaire au survol/actif */
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    background-color: var(--color-primary);
     color: var(--color-white);
     text-decoration: none;
 }
@@ -236,7 +264,6 @@ a:hover {
 /* ======================================= */
 
 #hero {
-    /* Image de fond aléatoire pour le héro */
     background: url('https://source.unsplash.com/random/1920x1080?web-development,technology') no-repeat center center/cover;
     color: var(--color-white);
     text-align: center;
@@ -245,8 +272,8 @@ a:hover {
     justify-content: center;
     min-height: 100vh;
     position: relative;
-    /* Utilise la variable --header-height-desktop pour compenser la hauteur du menu sur les grands écrans */
-    padding-top: var(--header-height-desktop);
+    /* Le padding-top sera ajusté par JavaScript */
+    padding-top: 0;
 }
 
 #hero::before {
@@ -321,7 +348,6 @@ a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-/* Styles pour les icônes de compétences */
 .skill-item .icon-placeholder {
     font-size: 3.5em;
     color: var(--color-primary);
@@ -329,7 +355,7 @@ a:hover {
     display: block;
 }
 .skill-item .icon-placeholder i {
-    color: var(--color-primary); /* S'assurer que les icônes Font Awesome ont la bonne couleur */
+    color: var(--color-primary);
 }
 
 
@@ -414,13 +440,13 @@ a:hover {
 }
 
 .contact-methods, .social-media-links, .blog-link-section {
-    background-color: #3f556b; /* Nuance de gris-bleu plus claire que le dark */
+    background-color: #3f556b;
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--border-radius);
     margin-bottom: var(--spacing-md);
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    color: var(--color-white); /* Assurer que le texte dans ces blocs est blanc */
+    color: var(--color-white);
 }
 
 .contact-methods h3, .social-media-links h3, .blog-link-section h3 {
@@ -453,27 +479,27 @@ a:hover {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: var(--spacing-md); /* Espacement entre les icônes */
+    gap: var(--spacing-md);
     margin: 0;
 }
 
 .social-media-links ul li a {
-    color: var(--color-white); /* Couleur par défaut de l'icône */
-    font-size: 1.5em; /* Taille de l'icône */
-    border: 2px solid var(--color-white); /* Bordure blanche autour de l'icône */
-    border-radius: 50%; /* Rendre le fond circulaire */
-    width: 55px; /* Largeur du cercle */
-    height: 55px; /* Hauteur du cercle */
-    display: flex; /* Utiliser flexbox pour centrer l'icône */
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
+    color: var(--color-white);
+    font-size: 1.5em;
+    border: 2px solid var(--color-white);
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .social-media-links ul li a:hover {
-    background-color: var(--color-primary); /* Fond bleu primaire au survol */
-    border-color: var(--color-primary); /* Bordure bleue primaire au survol */
-    color: var(--color-white); /* Texte/icône blanc au survol */
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
     text-decoration: none;
 }
 
@@ -594,41 +620,58 @@ a:hover {
 
     .section-padding { padding: var(--spacing-md) 0; }
 
-    /* Header et Navigation (Passage au mode colonne) */
-    #site-header {
-        min-height: auto; /* Supprimer la hauteur minimale fixe en mode mobile */
-        padding: var(--spacing-sm) 0; /* Plus de padding pour le mobile */
-        flex-direction: column; /* Laisser flex-direction sur le header pour centrer */
-        align-items: center; /* Assurez-vous que les éléments sont centrés */
-    }
-
+    /* Header et Navigation */
     #site-header .container {
-        flex-direction: column;
+        flex-direction: row; /* Garde le logo et le hamburger sur la même ligne */
+        justify-content: space-between; /* Espace le logo du hamburger */
         align-items: center;
-        text-align: center;
-        gap: 10px; /* Espacement plus petit en mode mobile */
-    }
-    #site-header nav ul {
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        margin-top: 5px; /* Marge plus petite en mode mobile */
-    }
-    #site-header nav ul li {
-        width: 100%;
-        text-align: center;
-    }
-    #site-header nav ul li a {
-        padding: 5px 0; /* Padding très réduit pour les liens en mode mobile */
-        display: block;
-        font-size: 0.85em; /* Taille de police des liens très réduite en mode mobile */
     }
 
-    /* Hero Section */
+    /* Afficher le bouton hamburger */
+    .hamburger-menu {
+        display: block; /* Visible sur mobile */
+    }
+
+    /* Cacher la navigation par défaut sur mobile */
+    .main-nav ul {
+        display: none;
+        flex-direction: column; /* Pour afficher en colonne quand actif */
+        position: absolute;
+        top: 100%; /* Juste en dessous du header */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-dark); /* Même fond que le header */
+        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    /* Afficher la navigation quand la classe 'active' est présente */
+    .main-nav ul.active {
+        display: flex; /* Affiche les éléments en colonne */
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .main-nav ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    .main-nav ul li a {
+        padding: 10px 0;
+        font-size: 1em;
+        display: block; /* Pour que le padding et la zone de clic soient étendus */
+    }
+    .main-nav ul li a:hover {
+        background-color: var(--color-primary);
+    }
+
+    /* Hero Section - Ajustement du padding-top pour compenser la hauteur du header (gérée par JS) */
     #hero {
         min-height: 70vh;
-        /* MODIFIÉ: Ajustement du padding-top pour compenser la hauteur du header mobile */
-        padding-top: var(--header-height-mobile); /* Utilisez la variable mobile */
+        padding-top: 0; /* Le JS gérera cette valeur dynamiquement */
     }
     #hero .hero-content {
         padding: var(--spacing-lg) var(--spacing-sm);
