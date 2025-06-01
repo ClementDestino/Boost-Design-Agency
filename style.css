@@ -1,110 +1,179 @@
-/* style.css - Code complet et final */
+/* style.css - Design moderne et Responsive */
+
+/* ======================================= */
+/* ====== Import des Polices Google ====== */
+/* ======================================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
 /* ======================================= */
 /* ====== Styles Généraux & de Base ====== */
 /* ======================================= */
 
+:root {
+    /* Palette de couleurs */
+    --color-primary: #007ACC; /* Bleu profond */
+    --color-secondary: #6c757d; /* Gris moyen */
+    --color-dark: #2c3e50; /* Bleu très foncé, presque noir */
+    --color-light-bg: #f8f9fa; /* Blanc cassé pour les fonds légers */
+    --color-white: #ffffff;
+    --color-text: #34495e; /* Texte principal légèrement plus clair que le dark */
+    --color-border: #e0e0e0; /* Couleur des bordures */
+    --color-link: #3498db; /* Bleu plus vif pour les liens */
+
+    /* Espacement */
+    --spacing-sm: 15px;
+    --spacing-md: 30px;
+    --spacing-lg: 60px;
+    --spacing-xl: 90px;
+
+    /* Rayons des bords */
+    --border-radius: 8px;
+    --box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7;
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f4f4f4;
+    color: var(--color-text);
+    background-color: var(--color-light-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Assure que padding et border sont inclus dans la largeur */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px; /* Ajout de padding pour éviter que le contenu touche les bords sur les grands écrans */
+    padding: 0 var(--spacing-md);
 }
 
-/* Texte */
+/* Typographie */
 h1, h2, h3 {
-    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-dark);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3.8em;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.8em;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.8em;
+    font-weight: 600;
 }
 
 p {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: var(--spacing-sm);
     font-size: 1.1em;
+    line-height: 1.8;
+    max-width: 900px; /* Limite la largeur des paragraphes pour une meilleure lecture */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Liens */
 a {
-    color: #007bff;
+    color: var(--color-link);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
+    color: var(--color-primary);
     text-decoration: underline;
 }
 
 /* Boutons */
 .btn-primary {
     display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    padding: 12px 25px;
-    border-radius: 5px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 15px 35px;
+    border-radius: var(--border-radius);
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #0060A0; /* Une nuance plus foncée au survol */
+    transform: translateY(-2px);
     text-decoration: none;
 }
 
 .btn-secondary {
     display: inline-block;
-    background-color: #6c757d;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    font-weight: 400;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95em;
 }
 
 .btn-secondary:hover {
     background-color: #5a6268;
+    transform: translateY(-1px);
     text-decoration: none;
 }
 
+
 /* Sections */
 .section-padding {
-    padding: 80px 0;
+    padding: var(--spacing-xl) 0; /* Padding généreux pour les sections */
 }
 
 .bg-light {
-    background-color: #e9ecef;
+    background-color: var(--color-light-bg);
 }
 
 .bg-dark {
-    background-color: #343a40;
-    color: #f8f9fa;
+    background-color: var(--color-dark);
+    color: var(--color-white);
 }
-.bg-dark h2, .bg-dark h3 {
-    color: #f8f9fa;
+.bg-dark h2, .bg-dark h3, .bg-dark p, .bg-dark a {
+    color: var(--color-white);
 }
-
+.bg-dark a:hover {
+    color: var(--color-primary);
+}
 
 /* ======================================= */
 /* =========== Header & Navigation ======= */
 /* ======================================= */
 
 #site-header {
-    background-color: #333;
-    color: #fff;
-    padding: 15px 0;
+    background-color: rgba(44, 62, 80, 0.95); /* Semi-transparent pour un effet moderne */
+    padding: var(--spacing-sm) 0;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
 
 #site-header .container {
@@ -114,10 +183,16 @@ a:hover {
 }
 
 #site-header .logo {
-    color: #fff;
-    font-size: 2em;
-    font-weight: bold;
+    color: var(--color-white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 700;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#site-header .logo:hover {
+    color: var(--color-primary);
 }
 
 #site-header nav ul {
@@ -125,19 +200,20 @@ a:hover {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 25px; /* Espace entre les éléments de navigation */
+    gap: var(--spacing-md);
 }
 
 #site-header nav ul li a {
-    color: #fff;
+    color: var(--color-white);
     text-decoration: none;
     padding: 10px 15px;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+    border-radius: var(--border-radius); /* Petits arrondis sur les liens de nav */
 }
 
 #site-header nav ul li a:hover {
-    background-color: #555;
+    background-color: var(--color-primary);
+    color: var(--color-white);
     text-decoration: none;
 }
 
@@ -147,13 +223,13 @@ a:hover {
 /* ======================================= */
 
 #hero {
-    background: url('https://via.placeholder.com/1500x800?text=Hero+Background') no-repeat center center/cover;
-    color: #fff;
+    background: url('https://via.placeholder.com/1920x1080/2c3e50/ffffff?text=Votre+Image+Heroique') no-repeat center center/cover; /* Placeholder sombre */
+    color: var(--color-white);
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    min-height: 100vh; /* S'assure que la section prend au moins toute la hauteur */
     position: relative;
     padding-top: 80px; /* Compense la hauteur du header fixe */
 }
@@ -165,28 +241,29 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5); /* Ombre semi-transparente */
+    background-color: rgba(0,0,0,0.6); /* Ombre plus prononcée */
     z-index: 1;
 }
 
 #hero .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: var(--spacing-md);
 }
 
 #hero .hero-content h1 {
-    font-size: 3.5em;
-    margin-bottom: 20px;
-    color: #fff;
+    font-size: 4em;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-white);
+    line-height: 1.2;
 }
 
 #hero .hero-content p {
-    font-size: 1.3em;
-    margin-bottom: 30px;
-    color: #eee;
+    font-size: 1.4em;
+    margin-bottom: var(--spacing-md);
+    color: #e0e0e0;
 }
 
 
@@ -195,8 +272,10 @@ a:hover {
 /* ======================================= */
 
 #about p {
-    max-width: 800px;
-    margin: 0 auto 15px auto;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-sm);
 }
 
 
@@ -205,50 +284,46 @@ a:hover {
 /* ======================================= */
 
 .skills-grid {
-    display: flex;
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
-    justify-content: center; /* Centre les éléments */
-    gap: 30px; /* Espace entre les éléments */
-    margin-top: 40px;
+    display: grid; /* Utilisation de CSS Grid pour plus de contrôle */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 colonnes flexibles */
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    justify-items: center; /* Centre les éléments dans les cellules de la grille */
 }
 
 .skill-item {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     text-align: center;
-    flex-basis: calc(33% - 20px); /* Pour 3 colonnes avec un peu d'espace */
-    box-sizing: border-box; /* Inclure padding et border dans la largeur */
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-border); /* Petite bordure discrète */
 }
 
 .skill-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-.skill-item i { /* Pour les icones, si tu utilises FontAwesome par exemple */
-    font-size: 3em;
-    color: #007bff;
-    margin-bottom: 15px;
-}
-/* Placeholder pour tes icônes de compétences */
 .skill-item .icon-placeholder {
-    font-size: 3em;
-    color: #007bff;
-    margin-bottom: 15px;
-    display: block; /* S'assure que le texte se comporte comme un bloc */
+    font-size: 3.5em;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    display: block;
 }
 
 .skill-item h3 {
-    font-size: 1.5em;
+    font-size: 1.6em;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--color-dark);
 }
 
 .skill-item p {
     font-size: 0.95em;
-    color: #666;
+    color: var(--color-text);
+    margin: 0;
+    text-align: center; /* S'assurer que le texte est centré */
 }
 
 
@@ -257,50 +332,53 @@ a:hover {
 /* ======================================= */
 
 .portfolio-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
+    display: grid; /* Utilisation de CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 2 colonnes flexibles */
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    justify-items: center;
 }
 
 .portfolio-item {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    overflow: hidden; /* Cache les débordements des images */
-    flex-basis: calc(48% - 15px); /* Pour 2 colonnes */
-    max-width: 580px; /* Limite la largeur max de chaque élément */
-    box-sizing: border-box;
-    transition: transform 0.3s ease;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-border);
 }
 
 .portfolio-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
 .portfolio-item img {
     width: 100%;
-    height: 250px; /* Hauteur fixe pour l'image */
-    object-fit: cover; /* Assure que l'image couvre l'espace sans déformation */
+    height: 280px; /* Hauteur légèrement augmentée pour les images */
+    object-fit: cover;
     display: block;
+    transition: transform 0.3s ease; /* Effet de zoom léger sur l'image */
+}
+.portfolio-item:hover img {
+    transform: scale(1.03);
 }
 
 .portfolio-item .item-content {
-    padding: 20px;
+    padding: var(--spacing-md);
     text-align: center;
 }
 
 .portfolio-item h3 {
-    font-size: 1.6em;
+    font-size: 1.7em;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--color-dark);
 }
 
 .portfolio-item p {
-    font-size: 0.95em;
-    color: #666;
-    margin-bottom: 20px;
+    font-size: 1em;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
 }
 
 
@@ -309,36 +387,42 @@ a:hover {
 /* ======================================= */
 
 #contact p {
-    max-width: 800px;
-    margin: 0 auto 30px auto;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-lg);
 }
 
 .contact-methods, .social-media-links, .blog-link-section {
-    background-color: #495057; /* Couleur de fond plus claire que le bg-dark */
-    padding: 25px 30px;
-    border-radius: 8px;
-    margin-bottom: 40px; /* Espace entre les blocs */
+    background-color: #3f556b; /* Nuance de gris-bleu plus claire que le dark */
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .contact-methods h3, .social-media-links h3, .blog-link-section h3 {
     margin-top: 0;
-    margin-bottom: 15px;
-    color: #fff; /* Titres blancs */
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-white);
+    font-size: 1.6em;
 }
 
 .contact-methods p {
     font-size: 1.1em;
-    color: #f8f9fa;
-    margin: 0; /* Pas de marge additionnelle pour les paragraphes à l'intérieur */
+    color: #e0e0e0;
+    margin: 0;
 }
 .contact-methods p strong {
-    color: #fff;
+    color: var(--color-white);
 }
 .contact-methods p a {
-    color: #b0d3ff; /* Couleur du lien téléphone */
+    color: #92c0e7; /* Bleu plus clair pour les liens */
+    transition: color 0.3s ease;
 }
 .contact-methods p a:hover {
+    color: var(--color-primary);
     text-decoration: underline;
 }
 
@@ -347,79 +431,84 @@ a:hover {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 25px; /* Espace entre les icônes sociales */
+    gap: var(--spacing-md);
     margin: 0;
 }
 
 .social-media-links ul li a {
-    color: #fff;
-    font-size: 1.2em;
-    border: 2px solid #fff;
-    border-radius: 50%; /* Pour les rendre ronds */
-    width: 45px;
-    height: 45px;
+    color: var(--color-white);
+    font-size: 1.3em;
+    border: 2px solid var(--color-white);
+    border-radius: 50%;
+    width: 50px; /* Plus grande taille pour les icônes */
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .social-media-links ul li a:hover {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: #fff;
-    text-decoration: none; /* Enlève le soulignement au survol */
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
 }
 
 .blog-link-section p {
     font-size: 1.1em;
-    color: #f8f9fa;
+    color: #e0e0e0;
     margin: 0;
 }
 
 .blog-link-section a {
-    color: #b0d3ff; /* Couleur du lien vers le blog */
+    color: #92c0e7;
     text-decoration: underline;
+    transition: color 0.3s ease;
 }
 .blog-link-section a:hover {
-    color: #fff;
+    color: var(--color-primary);
 }
 
 .contact-form {
-    background-color: #495057;
-    padding: 40px;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    background-color: var(--color-white); /* Formulaire sur fond blanc */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    max-width: 700px;
+    margin: var(--spacing-lg) auto 0 auto; /* Marge supérieure pour séparer du reste */
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--color-border);
 }
 
 .contact-form h3 {
     margin-top: 0;
-    margin-bottom: 30px;
-    color: #fff;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-dark);
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-    width: 100%; /* Prend toute la largeur disponible */
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #6c757d;
-    border-radius: 5px;
-    background-color: #5a6268; /* Couleur de fond plus sombre pour les inputs */
-    color: #f8f9fa;
-    box-sizing: border-box; /* Inclure padding et border dans la largeur */
+    width: 100%;
+    padding: 15px;
+    margin-bottom: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: #f0f3f6; /* Fond légèrement grisé pour les inputs */
+    color: var(--color-text);
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: #ced4da;
+    color: #99aab5;
 }
 
 .contact-form textarea {
-    resize: vertical; /* Permet à l'utilisateur de redimensionner verticalement */
+    resize: vertical;
+    min-height: 120px;
 }
 
 .contact-form button {
@@ -436,10 +525,10 @@ a:hover {
 /* ======================================= */
 
 #site-footer {
-    background-color: #212529;
+    background-color: var(--color-dark);
     color: #adb5bd;
     text-align: center;
-    padding: 25px 0;
+    padding: var(--spacing-md) 0;
     font-size: 0.9em;
 }
 
@@ -448,76 +537,44 @@ a:hover {
 /* ====== Styles Responsive (Media Queries) ===== */
 /* ======================================= */
 
-/* --- Pour les écrans plus petits que 992px (Tablettes en mode portrait) --- */
-@media (max-width: 992px) {
-    .container {
-        width: 90%; /* On réduit la largeur du conteneur */
-        padding: 0 15px; /* Ajuste le padding */
-    }
+/* --- Pour les écrans plus petits que 1024px (Ordinateurs portables, grandes tablettes) --- */
+@media (max-width: 1024px) {
+    h1 { font-size: 3.2em; }
+    h2 { font-size: 2.4em; }
+    h3 { font-size: 1.7em; }
 
-    #site-header .logo {
-        font-size: 1.8em; /* Réduit un peu la taille du logo */
-    }
+    .section-padding { padding: var(--spacing-lg) 0; }
+    
+    #hero .hero-content h1 { font-size: 3.5em; }
+    #hero .hero-content p { font-size: 1.3em; }
 
-    /* Navigation (menu) - Garde en ligne mais réduit l'espace */
-    #site-header nav ul {
-        gap: 15px; /* Réduit l'espace entre les éléments de navigation */
-    }
-
-    /* Section Héro (Première page) */
-    #hero .hero-content h1 {
-        font-size: 3em;
-    }
-    #hero .hero-content p {
-        font-size: 1.2em;
-    }
-
-    /* Grille des compétences */
+    /* Ajustement des grilles */
     .skills-grid {
-        /* Passe de 3 à 2 colonnes sur tablette */
-        flex-basis: calc(50% - 15px); /* Chaque élément prend la moitié - espace */
-        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-md);
     }
-    .skill-item {
-        max-width: calc(50% - 15px); /* Limite la largeur max */
-    }
-
-    /* Grille du portfolio */
     .portfolio-grid {
-        /* Passe de 2 à 1 colonne sur tablette (pour la simplicité) */
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-    }
-    .portfolio-item {
-        width: 90%; /* Prend presque toute la largeur disponible */
-        max-width: 600px; /* Empêche de devenir trop large sur une grande tablette */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-md);
     }
 }
 
-
-/* --- Pour les écrans plus petits que 768px (Grands smartphones, petites tablettes) --- */
+/* --- Pour les écrans plus petits que 768px (Tablettes en mode portrait, grands smartphones) --- */
 @media (max-width: 768px) {
-    .section-padding {
-        padding: 60px 0; /* Réduit le padding des sections */
+    .container {
+        padding: 0 var(--spacing-sm); /* Réduit le padding sur les côtés */
     }
 
-    h1 {
-        font-size: 2.5em;
-    }
-    h2 {
-        font-size: 2em;
-    }
-    h3 {
-        font-size: 1.6em;
-    }
-    p {
-        font-size: 1em; /* Ajuste la taille du texte des paragraphes */
-    }
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2.2em; }
+    h3 { font-size: 1.5em; }
+    p { font-size: 1em; }
 
-    /* Header et Navigation (Passage au mode colonne ou menu burger à implémenter si besoin) */
+    .section-padding { padding: var(--spacing-md) 0; }
+
+    /* Header et Navigation (Passage au mode colonne ou menu burger si nécessaire) */
     #site-header .container {
-        flex-direction: column; /* Le logo et la nav s'empilent */
+        flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 15px;
@@ -529,97 +586,80 @@ a:hover {
         margin-top: 10px;
     }
     #site-header nav ul li {
-        width: 100%; /* Chaque lien prend toute la largeur */
+        width: 100%;
         text-align: center;
     }
     #site-header nav ul li a {
-        padding: 10px 0; /* Ajuste le padding des liens du menu */
-        display: block; /* Pour que le padding et la zone de clic soient toute la largeur */
+        padding: 10px 0;
+        display: block;
     }
 
     /* Hero Section */
     #hero {
-        height: auto; /* La hauteur s'adapte au contenu */
-        min-height: 70vh; /* Minimum pour ne pas être trop petit */
+        min-height: 70vh; /* Minimum pour ne pas être trop petit sur mobile */
     }
     #hero .hero-content {
-        padding: 60px 20px; /* Plus de padding pour le contenu du héro */
+        padding: var(--spacing-lg) var(--spacing-sm);
     }
     #hero .hero-content h1 {
-        font-size: 2em; /* Réduit encore la taille du titre principal */
+        font-size: 2.5em;
+    }
+    #hero .hero-content p {
+        font-size: 1.1em;
+    }
+
+    /* Grilles (Compétences & Portfolio) */
+    .skills-grid, .portfolio-grid {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: var(--spacing-md);
+    }
+    .skill-item, .portfolio-item {
+        width: 95%; /* Prend presque toute la largeur disponible */
+        max-width: 450px; /* Limite la largeur sur les écrans plus grands */
+    }
+
+    /* Contact Section */
+    .contact-form {
+        padding: var(--spacing-md);
+        margin-top: var(--spacing-md);
+    }
+
+    .contact-methods, .social-media-links, .blog-link-section {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+    .social-media-links ul {
+        gap: var(--spacing-sm); /* Espace plus petit entre les icônes */
+    }
+    .social-media-links ul li a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2em;
+    }
+}
+
+/* --- Pour les écrans très petits (< 480px) --- */
+@media (max-width: 480px) {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.4em; }
+    p { font-size: 0.95em; }
+
+    .btn-primary, .btn-secondary {
+        padding: 12px 20px;
+        font-size: 0.9em;
+    }
+    
+    #hero .hero-content h1 {
+        font-size: 2em;
     }
     #hero .hero-content p {
         font-size: 1em;
     }
 
-    /* Grille des compétences */
-    .skills-grid {
-        flex-direction: column; /* Chaque compétence sur sa propre ligne */
-        align-items: center;
-        gap: 25px;
-    }
-    .skill-item {
-        width: 95%; /* Prend presque toute la largeur disponible */
-        max-width: 450px;
-    }
-
-    /* Grille du portfolio */
-    .portfolio-grid {
-        gap: 30px;
-    }
-    .portfolio-item {
-        width: 95%;
-        max-width: 450px;
-    }
-
-    /* Formulaire de contact */
-    .contact-form {
-        padding: 30px;
-    }
     .contact-form input[type="text"],
     .contact-form input[type="email"],
     .contact-form textarea {
-        padding: 10px;
-        margin-bottom: 15px;
-    }
-
-    /* Sections de contact (téléphone, réseaux sociaux) */
-    .contact-methods, .social-media-links, .blog-link-section {
-        margin-bottom: 30px;
-        padding: 20px;
-    }
-
-    .social-media-links ul {
-        gap: 15px; /* Réduit l'espace entre les icônes sociales */
-    }
-    .social-media-links ul li a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1em;
-    }
-}
-
-
-/* --- Pour les écrans très petits (< 480px) --- */
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px; /* Réduit encore le padding sur les côtés */
-    }
-    
-    #hero .hero-content h1 {
-        font-size: 1.8em;
-    }
-    #hero .hero-content p {
-        font-size: 0.9em;
-    }
-    
-    /* Assurez-vous que les boutons restent bien formatés */
-    .btn-primary, .btn-secondary {
-        padding: 10px 18px;
-        font-size: 0.9em;
-    }
-
-    #site-footer {
-        padding: 20px 10px;
+        padding: 12px;
     }
 }
