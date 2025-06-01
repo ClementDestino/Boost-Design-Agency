@@ -166,9 +166,8 @@ a:hover {
 /* ======================================= */
 
 #site-header {
-    /* Couleur de fond du header (bleu très foncé) */
-    background-color: var(--color-dark);
-    padding: 10px 0; /* Réduit le padding vertical pour diminuer la hauteur */
+    background-color: var(--color-dark); /* Garder le bleu très foncé pour un look pro */
+    padding: 8px 0; /* MODIFIÉ: Encore plus réduit pour un menu très compact */
     position: fixed;
     width: 100%;
     top: 0;
@@ -186,7 +185,7 @@ a:hover {
 #site-header .logo {
     color: var(--color-white);
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.8em; /* MODIFIÉ: Taille de police du logo réduite */
+    font-size: 1.6em; /* MODIFIÉ: Taille de police du logo encore plus réduite */
     font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -201,20 +200,22 @@ a:hover {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: var(--spacing-sm); /* MODIFIÉ: Espacement réduit entre les liens de navigation */
+    gap: 20px; /* MODIFIÉ: Espacement fixe pour un contrôle précis */
 }
 
 #site-header nav ul li a {
-    color: var(--color-white);
+    color: #aebfd6; /* MODIFIÉ: Couleur des liens par défaut, légèrement plus claire que le fond */
     text-decoration: none;
-    padding: 7px 15px; /* Réduit le padding vertical des liens */
-    font-size: 0.9em; /* MODIFIÉ: Taille de police des liens réduite */
+    padding: 5px 12px; /* MODIFIÉ: Padding très réduit pour les liens */
+    font-size: 0.85em; /* MODIFIÉ: Taille de police des liens très réduite */
+    font-weight: 600; /* MODIFIÉ: Ajout d'un poids de police pour la clarté */
     transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius); /* Conserver les bords arrondis pour la modernité */
 }
 
-#site-header nav ul li a:hover {
-    background-color: var(--color-primary);
+#site-header nav ul li a:hover,
+#site-header nav ul li a.active { /* Ajout d'une classe active pour l'élément courant */
+    background-color: var(--color-primary); /* Bleu primaire au survol/actif */
     color: var(--color-white);
     text-decoration: none;
 }
@@ -234,7 +235,7 @@ a:hover {
     justify-content: center;
     min-height: 100vh;
     position: relative;
-    padding-top: 60px; /* MODIFIÉ: Ajusté pour compenser la hauteur réduite du header */
+    padding-top: 50px; /* MODIFIÉ: Ajusté pour compenser la hauteur très réduite du header */
 }
 
 #hero::before {
@@ -581,22 +582,22 @@ a:hover {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 15px;
+        gap: 10px; /* MODIFIÉ: Espacement plus petit en mode mobile */
     }
     #site-header nav ul {
         flex-direction: column;
         width: 100%;
         justify-content: center;
-        margin-top: 10px;
+        margin-top: 5px; /* MODIFIÉ: Marge plus petite en mode mobile */
     }
     #site-header nav ul li {
         width: 100%;
         text-align: center;
     }
     #site-header nav ul li a {
-        padding: 7px 0; /* Réduit le padding vertical des liens en mode mobile */
+        padding: 5px 0; /* MODIFIÉ: Padding très réduit pour les liens en mode mobile */
         display: block;
-        font-size: 0.9em; /* MODIFIÉ: Taille de police des liens réduite en mode mobile */
+        font-size: 0.85em; /* MODIFIÉ: Taille de police des liens très réduite en mode mobile */
     }
 
     /* Hero Section */
