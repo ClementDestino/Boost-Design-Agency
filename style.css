@@ -1,425 +1,625 @@
-/* Réinitialisation de base */
-* {
+/* style.css - Code complet et final */
+
+/* ======================================= */
+/* ====== Styles Généraux & de Base ====== */
+/* ======================================= */
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-body {
-    /* Utilise 'Roboto' ou 'Montserrat' si tu as décommenté les Google Fonts dans HTML */
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
     color: #333;
-    background-color: #f8f8f8;
+    background-color: #f4f4f4;
 }
-/* Conteneur principal pour la grille globale */
-#page-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto; /* Header, contenu principal, footer */
-    min-height: 100vh;
-}
-/* Classes utilitaires pour le layout */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px; /* Ajout de padding pour éviter que le contenu touche les bords sur les grands écrans */
 }
-.section-padding {
-    padding: 80px 0;
-}
-.bg-light {
-    background-color: #f2f7fc; /* Un bleu très clair, inspiré des couleurs "fraîches" */
-}
-.bg-dark {
-    background-color: #2c3e50; /* Un gris-bleu foncé, pour la profondeur */
-    color: white;
-}
-/* Styles des titres généraux */
+
+/* Texte */
 h1, h2, h3 {
-    font-family: 'Montserrat', sans-serif; /* Une police plus moderne et forte pour les titres */
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-h1 {
-    font-size: 3.5em;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* Légère ombre pour plus de lisibilité */
-}
-h2 {
-    font-size: 2.5em;
     color: #333;
     text-align: center;
-    margin-bottom: 40px;
-    position: relative;
-    padding-bottom: 10px;
-}
-h2::after { /* Ligne décorative sous les titres h2 */
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: #007bff; /* Bleu signature */
-    border-radius: 2px;
-}
-.bg-dark h2 {
-    color: white;
-}
-.bg-dark h2::after {
-    background-color: #28a745; /* Vert vif pour le contraste sur fond foncé */
-}
-h3 {
-    font-size: 1.8em;
-    color: #333;
-    margin-bottom: 15px;
-}
-.bg-dark h3 {
-    color: white;
-}
-p {
-    font-size: 1.1em;
     margin-bottom: 20px;
 }
-.bg-dark p {
-    color: #e0e0e0;
+
+p {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.1em;
 }
-/* Styles des liens et boutons */
+
+/* Liens */
 a {
     color: #007bff;
     text-decoration: none;
-    transition: color 0.3s ease;
 }
+
 a:hover {
-    color: #0056b3;
+    text-decoration: underline;
 }
-.btn-primary, .btn-secondary {
+
+/* Boutons */
+.btn-primary {
     display: inline-block;
+    background-color: #007bff;
+    color: #fff;
     padding: 12px 25px;
     border-radius: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
-    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-    border: 2px solid #007bff;
-}
+
 .btn-primary:hover {
     background-color: #0056b3;
-    border-color: #0056b3;
-    transform: translateY(-3px); /* Effet de légère élévation */
+    text-decoration: none;
 }
+
 .btn-secondary {
-    background-color: transparent;
-    color: #007bff;
-    border: 2px solid #007bff;
+    display: inline-block;
+    background-color: #6c757d;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
+
 .btn-secondary:hover {
-    background-color: #007bff;
-    color: white;
-    transform: translateY(-3px);
+    background-color: #5a6268;
+    text-decoration: none;
 }
-/* EN-TÊTE DU SITE */
+
+/* Sections */
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: #e9ecef;
+}
+
+.bg-dark {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+.bg-dark h2, .bg-dark h3 {
+    color: #f8f9fa;
+}
+
+
+/* ======================================= */
+/* =========== Header & Navigation ======= */
+/* ======================================= */
+
 #site-header {
-    background-color: #0056b3;
-    color: white;
-    padding: 20px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
     top: 0;
+    left: 0;
     z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
 #site-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.logo {
-    font-size: 1.8em;
+
+#site-header .logo {
+    color: #fff;
+    font-size: 2em;
     font-weight: bold;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    text-decoration: none;
 }
-.logo:hover {
-    color: #e0e0e0;
-}
+
 #site-header nav ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
+    gap: 25px; /* Espace entre les éléments de navigation */
 }
-#site-header nav ul li {
-    margin-left: 30px;
-}
+
 #site-header nav ul li a {
-    color: white;
-    font-weight: bold;
-    font-size: 1.1em;
-    padding: 5px 0;
-    position: relative;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
 }
-#site-header nav ul li a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 3px;
-    background-color: #28a745; /* Vert vif pour l'accent */
-    transition: width 0.3s ease-in-out;
+
+#site-header nav ul li a:hover {
+    background-color: #555;
+    text-decoration: none;
 }
-#site-header nav ul li a:hover::after {
-    width: 100%;
-}
-/* SECTION HÉRO */
+
+
+/* ======================================= */
+/* ============== Hero Section =========== */
+/* ======================================= */
+
 #hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://picsum.photos/1600/900?random=1');
-    background-size: cover;
-    background-position: center;
-    color: white;
+    background: url('https://via.placeholder.com/1500x800?text=Hero+Background') no-repeat center center/cover;
+    color: #fff;
     text-align: center;
-    padding: 150px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 600px;
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    position: relative;
+    padding-top: 80px; /* Compense la hauteur du header fixe */
 }
-.hero-content p {
-    font-size: 1.5em;
-    opacity: 0.9;
-    margin-bottom: 40px;
+
+#hero::before { /* Overlay pour rendre le texte plus lisible */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Ombre semi-transparente */
+    z-index: 1;
 }
-/* SECTION À PROPOS */
+
+#hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#hero .hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+#hero .hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    color: #eee;
+}
+
+
+/* ======================================= */
+/* =========== About Section ============= */
+/* ======================================= */
+
 #about p {
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 15px auto;
 }
-/* SECTION COMPÉTENCES */
+
+
+/* ======================================= */
+/* =========== Skills Section ============ */
+/* ======================================= */
+
 .skills-grid {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+    justify-content: center; /* Centre les éléments */
+    gap: 30px; /* Espace entre les éléments */
+    margin-top: 40px;
+}
+
+.skill-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    flex-basis: calc(33% - 20px); /* Pour 3 colonnes avec un peu d'espace */
+    box-sizing: border-box; /* Inclure padding et border dans la largeur */
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+}
+
+.skill-item i { /* Pour les icones, si tu utilises FontAwesome par exemple */
+    font-size: 3em;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+/* Placeholder pour tes icônes de compétences */
+.skill-item .icon-placeholder {
+    font-size: 3em;
+    color: #007bff;
+    margin-bottom: 15px;
+    display: block; /* S'assure que le texte se comporte comme un bloc */
+}
+
+.skill-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.skill-item p {
+    font-size: 0.95em;
+    color: #666;
+}
+
+
+/* ======================================= */
+/* =========== Portfolio Section ========= */
+/* ======================================= */
+
+.portfolio-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
     margin-top: 40px;
 }
-.skill-item {
-    background-color: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    padding: 30px;
-    text-align: center;
-    width: 280px; /* Légèrement plus large pour les compétences */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-.skill-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-/* Style pour les placeholders d'icônes (si Font Awesome n'est pas utilisé) */
-.icon-placeholder {
-    font-size: 3em;
-    color: #007bff;
-    margin-bottom: 15px;
-    display: inline-block; /* Garde la taille du texte */
-    font-weight: bold;
-    text-align: center;
-    min-width: 1em; /* Assure une largeur minimale pour centrer le texte */
-}
-.skill-item h3 {
-    font-size: 1.3em;
-    color: #333;
-    margin-bottom: 10px;
-}
-.skill-item p {
-    font-size: 0.95em;
-    color: #666;
-    margin-bottom: 0;
-}
-/* SECTION PORTFOLIO */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* S'adapte mieux */
-    gap: 30px;
-    margin-top: 40px;
-}
+
 .portfolio-item {
-    background-color: white;
-    border: 1px solid #e0e0e0;
+    background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    text-align: center;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden; /* Cache les débordements des images */
+    flex-basis: calc(48% - 15px); /* Pour 2 colonnes */
+    max-width: 580px; /* Limite la largeur max de chaque élément */
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
 }
+
 .portfolio-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+
 .portfolio-item img {
-    max-width: 100%;
-    height: 250px;
-    object-fit: cover;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #f0f0f0;
+    width: 100%;
+    height: 250px; /* Hauteur fixe pour l'image */
+    object-fit: cover; /* Assure que l'image couvre l'espace sans déformation */
+    display: block;
 }
+
 .portfolio-item .item-content {
-    padding: 0 20px 20px; /* Padding interne pour le contenu textuel */
-    flex-grow: 1; /* Permet au contenu de prendre l'espace disponible */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pour pousser le bouton vers le bas */
+    padding: 20px;
+    text-align: center;
 }
+
 .portfolio-item h3 {
-    font-size: 1.5em;
-    color: #0056b3;
+    font-size: 1.6em;
     margin-bottom: 10px;
+    color: #333;
 }
+
 .portfolio-item p {
     font-size: 0.95em;
     color: #666;
     margin-bottom: 20px;
-    flex-grow: 1; /* Le paragraphe prend l'espace restant pour aligner les boutons */
 }
-.portfolio-item .btn-secondary {
-    margin-top: auto; /* Pousse le bouton vers le bas dans l'item flex */
+
+
+/* ======================================= */
+/* =========== Contact Section =========== */
+/* ======================================= */
+
+#contact p {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
 }
-/* SECTION CONTACT */
-.contact-form {
-    max-width: 600px;
-    margin: 40px auto 0;
+
+.contact-methods, .social-media-links, .blog-link-section {
+    background-color: #495057; /* Couleur de fond plus claire que le bg-dark */
+    padding: 25px 30px;
+    border-radius: 8px;
+    margin-bottom: 40px; /* Espace entre les blocs */
+    text-align: center;
+}
+
+.contact-methods h3, .social-media-links h3, .blog-link-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #fff; /* Titres blancs */
+}
+
+.contact-methods p {
+    font-size: 1.1em;
+    color: #f8f9fa;
+    margin: 0; /* Pas de marge additionnelle pour les paragraphes à l'intérieur */
+}
+.contact-methods p strong {
+    color: #fff;
+}
+.contact-methods p a {
+    color: #b0d3ff; /* Couleur du lien téléphone */
+}
+.contact-methods p a:hover {
+    text-decoration: underline;
+}
+
+.social-media-links ul {
+    list-style: none;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    justify-content: center;
+    gap: 25px; /* Espace entre les icônes sociales */
+    margin: 0;
 }
+
+.social-media-links ul li a {
+    color: #fff;
+    font-size: 1.2em;
+    border: 2px solid #fff;
+    border-radius: 50%; /* Pour les rendre ronds */
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-media-links ul li a:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    text-decoration: none; /* Enlève le soulignement au survol */
+}
+
+.blog-link-section p {
+    font-size: 1.1em;
+    color: #f8f9fa;
+    margin: 0;
+}
+
+.blog-link-section a {
+    color: #b0d3ff; /* Couleur du lien vers le blog */
+    text-decoration: underline;
+}
+.blog-link-section a:hover {
+    color: #fff;
+}
+
+.contact-form {
+    background-color: #495057;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.contact-form h3 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-    padding: 15px;
+    width: 100%; /* Prend toute la largeur disponible */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #6c757d;
     border-radius: 5px;
-    border: 1px solid #555;
-    background-color: #3f5163; /* Fond plus clair pour les champs sur fond foncé */
-    color: white;
-    font-size: 1em;
+    background-color: #5a6268; /* Couleur de fond plus sombre pour les inputs */
+    color: #f8f9fa;
+    box-sizing: border-box; /* Inclure padding et border dans la largeur */
 }
+
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: #ccc;
-    opacity: 0.7; /* Légèrement plus transparent pour les placeholders */
+    color: #ced4da;
 }
+
+.contact-form textarea {
+    resize: vertical; /* Permet à l'utilisateur de redimensionner verticalement */
+}
+
 .contact-form button {
-    width: fit-content;
-    margin: 0 auto;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border: none;
 }
-.social-links {
-    margin-top: 40px;
-    text-align: center;
-}
-.social-icon {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: #007bff;
-    color: white;
-    font-size: 1.5em;
-    margin: 0 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombre pour les icônes */
-}
-.social-icon:hover {
-    background-color: #28a745;
-    transform: translateY(-3px);
-}
-/* PIED DE PAGE */
+
+
+/* ======================================= */
+/* ============== Footer ================= */
+/* ======================================= */
+
 #site-footer {
-    background-color: #2c3e50;
-    color: white;
+    background-color: #212529;
+    color: #adb5bd;
     text-align: center;
-    padding: 30px 0;
-    grid-row: 3;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding: 25px 0;
+    font-size: 0.9em;
 }
-#site-footer p {
-    margin-bottom: 0;
+
+
+/* ======================================= */
+/* ====== Styles Responsive (Media Queries) ===== */
+/* ======================================= */
+
+/* --- Pour les écrans plus petits que 992px (Tablettes en mode portrait) --- */
+@media (max-width: 992px) {
+    .container {
+        width: 90%; /* On réduit la largeur du conteneur */
+        padding: 0 15px; /* Ajuste le padding */
+    }
+
+    #site-header .logo {
+        font-size: 1.8em; /* Réduit un peu la taille du logo */
+    }
+
+    /* Navigation (menu) - Garde en ligne mais réduit l'espace */
+    #site-header nav ul {
+        gap: 15px; /* Réduit l'espace entre les éléments de navigation */
+    }
+
+    /* Section Héro (Première page) */
+    #hero .hero-content h1 {
+        font-size: 3em;
+    }
+    #hero .hero-content p {
+        font-size: 1.2em;
+    }
+
+    /* Grille des compétences */
+    .skills-grid {
+        /* Passe de 3 à 2 colonnes sur tablette */
+        flex-basis: calc(50% - 15px); /* Chaque élément prend la moitié - espace */
+        gap: 30px;
+    }
+    .skill-item {
+        max-width: calc(50% - 15px); /* Limite la largeur max */
+    }
+
+    /* Grille du portfolio */
+    .portfolio-grid {
+        /* Passe de 2 à 1 colonne sur tablette (pour la simplicité) */
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    .portfolio-item {
+        width: 90%; /* Prend presque toute la largeur disponible */
+        max-width: 600px; /* Empêche de devenir trop large sur une grande tablette */
+    }
 }
-/* ========================================= */
-/* Responsive Design (Requêtes Média) */
-/* ========================================= */
+
+
+/* --- Pour les écrans plus petits que 768px (Grands smartphones, petites tablettes) --- */
 @media (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0; /* Réduit le padding des sections */
+    }
+
     h1 {
         font-size: 2.5em;
     }
     h2 {
         font-size: 2em;
-        margin-bottom: 30px;
+    }
+    h3 {
+        font-size: 1.6em;
     }
     p {
-        font-size: 1em;
+        font-size: 1em; /* Ajuste la taille du texte des paragraphes */
     }
-    .section-padding {
-        padding: 50px 0;
-    }
+
+    /* Header et Navigation (Passage au mode colonne ou menu burger à implémenter si besoin) */
     #site-header .container {
-        flex-direction: column;
+        flex-direction: column; /* Le logo et la nav s'empilent */
+        align-items: center;
         text-align: center;
+        gap: 15px;
     }
     #site-header nav ul {
-        margin-top: 15px;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Le menu se met en colonne */
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
     }
     #site-header nav ul li {
-        margin: 10px 0;
+        width: 100%; /* Chaque lien prend toute la largeur */
+        text-align: center;
     }
+    #site-header nav ul li a {
+        padding: 10px 0; /* Ajuste le padding des liens du menu */
+        display: block; /* Pour que le padding et la zone de clic soient toute la largeur */
+    }
+
+    /* Hero Section */
     #hero {
-        min-height: 400px;
-        padding: 80px 0;
+        height: auto; /* La hauteur s'adapte au contenu */
+        min-height: 70vh; /* Minimum pour ne pas être trop petit */
     }
-    .hero-content p {
-        font-size: 1.2em;
-        margin-bottom: 30px;
+    #hero .hero-content {
+        padding: 60px 20px; /* Plus de padding pour le contenu du héro */
     }
-    .skills-grid, .portfolio-grid {
-        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
-        gap: 20px;
+    #hero .hero-content h1 {
+        font-size: 2em; /* Réduit encore la taille du titre principal */
     }
-    .skill-item, .portfolio-item {
-        width: 90%;
-        max-width: 400px;
-        margin: 0 auto;
+    #hero .hero-content p {
+        font-size: 1em;
     }
-    .portfolio-item img {
-        height: 200px; /* Plus petite hauteur d'image sur mobile */
+
+    /* Grille des compétences */
+    .skills-grid {
+        flex-direction: column; /* Chaque compétence sur sa propre ligne */
+        align-items: center;
+        gap: 25px;
     }
+    .skill-item {
+        width: 95%; /* Prend presque toute la largeur disponible */
+        max-width: 450px;
+    }
+
+    /* Grille du portfolio */
+    .portfolio-grid {
+        gap: 30px;
+    }
+    .portfolio-item {
+        width: 95%;
+        max-width: 450px;
+    }
+
+    /* Formulaire de contact */
     .contact-form {
-        margin-top: 20px;
+        padding: 30px;
     }
-    .social-icon {
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    /* Sections de contact (téléphone, réseaux sociaux) */
+    .contact-methods, .social-media-links, .blog-link-section {
+        margin-bottom: 30px;
+        padding: 20px;
+    }
+
+    .social-media-links ul {
+        gap: 15px; /* Réduit l'espace entre les icônes sociales */
+    }
+    .social-media-links ul li a {
         width: 40px;
         height: 40px;
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-    .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+
+/* --- Pour les écrans très petits (< 480px) --- */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px; /* Réduit encore le padding sur les côtés */
     }
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    
+    #hero .hero-content h1 {
+        font-size: 1.8em;
+    }
+    #hero .hero-content p {
+        font-size: 0.9em;
+    }
+    
+    /* Assurez-vous que les boutons restent bien formatés */
+    .btn-primary, .btn-secondary {
+        padding: 10px 18px;
+        font-size: 0.9em;
+    }
+
+    #site-footer {
+        padding: 20px 10px;
     }
 }
