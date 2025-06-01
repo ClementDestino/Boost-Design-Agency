@@ -9,7 +9,7 @@
         /* Styles spécifiques pour les pages de projet */
         .project-detail-container {
             max-width: 900px;
-            margin: 60px auto;
+            margin: 30px auto; /* Le padding-top du <main> compense déjà le header */
             padding: 20px;
             background-color: white;
             border-radius: 8px;
@@ -108,7 +108,7 @@
 
         @media (max-width: 768px) {
             .project-detail-container {
-                margin: 30px auto;
+                margin: 20px auto; /* Ajusté pour moins de top margin, car main a déjà padding-top */
                 padding: 15px;
             }
             .project-detail-container h1 {
@@ -130,7 +130,7 @@
     <header id="site-header">
         <div class="container">
             <a href="index.html" class="logo">Boost Design Agency</a>
-            <nav>
+            <nav class="main-nav">
                 <ul>
                     <li><a href="index.html#hero">Accueil</a></li>
                     <li><a href="index.html#about">À Propos</a></li>
