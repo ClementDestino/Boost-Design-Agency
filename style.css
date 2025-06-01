@@ -30,8 +30,10 @@
     --border-radius: 8px;
     --box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 
-    /* Hauteur du header pour compensation */
-    --header-height: 60px; /* Estimation de la hauteur finale du header */
+    /* Hauteur du header pour compensation (ajustée pour les écrans larges) */
+    --header-height-desktop: 60px; 
+    /* Hauteur du header pour compensation (ajustée pour les mobiles) */
+    --header-height-mobile: 180px; /* Augmenté pour compenser le menu mobile en colonne */
 }
 
 body {
@@ -170,7 +172,7 @@ a:hover {
 
 #site-header {
     background-color: var(--color-dark); /* Garder le bleu très foncé pour un look pro */
-    padding: 8px 0; /* Encore plus réduit pour un menu très compact */
+    padding: 8px 0; /* Encore réduit pour un menu très compact */
     position: fixed;
     width: 100%;
     top: 0;
@@ -178,7 +180,7 @@ a:hover {
     z-index: 1000;
     box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     /* Ajout d'une hauteur minimale pour s'assurer qu'elle est cohérente */
-    min-height: var(--header-height);
+    min-height: var(--header-height-desktop);
     display: flex; /* Utiliser flexbox pour centrer le contenu verticalement */
     align-items: center;
 }
@@ -212,7 +214,7 @@ a:hover {
 }
 
 #site-header nav ul li a {
-    color: #aebfd6; /* Couleur des liens par défaut, légèrement plus claire que le fond */
+    color: #aebfd6; /* Couleur des liens par default, légèrement plus claire que le fond */
     text-decoration: none;
     padding: 5px 12px; /* Padding très réduit pour les liens */
     font-size: 0.85em; /* Taille de police des liens très réduite */
@@ -243,8 +245,8 @@ a:hover {
     justify-content: center;
     min-height: 100vh;
     position: relative;
-    /* MODIFIÉ: Utilise la variable --header-height pour compenser la hauteur du menu */
-    padding-top: var(--header-height);
+    /* Utilise la variable --header-height-desktop pour compenser la hauteur du menu sur les grands écrans */
+    padding-top: var(--header-height-desktop);
 }
 
 #hero::before {
@@ -319,12 +321,17 @@ a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
+/* Styles pour les icônes de compétences */
 .skill-item .icon-placeholder {
     font-size: 3.5em;
     color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
     display: block;
 }
+.skill-item .icon-placeholder i {
+    color: var(--color-primary); /* S'assurer que les icônes Font Awesome ont la bonne couleur */
+}
+
 
 .skill-item h3 {
     font-size: 1.6em;
@@ -413,6 +420,7 @@ a:hover {
     margin-bottom: var(--spacing-md);
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    color: var(--color-white); /* Assurer que le texte dans ces blocs est blanc */
 }
 
 .contact-methods h3, .social-media-links h3, .blog-link-section h3 {
@@ -591,6 +599,7 @@ a:hover {
         min-height: auto; /* Supprimer la hauteur minimale fixe en mode mobile */
         padding: var(--spacing-sm) 0; /* Plus de padding pour le mobile */
         flex-direction: column; /* Laisser flex-direction sur le header pour centrer */
+        align-items: center; /* Assurez-vous que les éléments sont centrés */
     }
 
     #site-header .container {
@@ -618,8 +627,8 @@ a:hover {
     /* Hero Section */
     #hero {
         min-height: 70vh;
-        /* Revoir padding-top pour mobile car le header est plus grand en colonne */
-        padding-top: 150px; /* Ajustement plus important pour compenser le header étendu en mobile */
+        /* MODIFIÉ: Ajustement du padding-top pour compenser la hauteur du header mobile */
+        padding-top: var(--header-height-mobile); /* Utilisez la variable mobile */
     }
     #hero .hero-content {
         padding: var(--spacing-lg) var(--spacing-sm);
