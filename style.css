@@ -29,6 +29,9 @@
     /* Rayons des bords */
     --border-radius: 8px;
     --box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+    /* Hauteur du header pour compensation */
+    --header-height: 60px; /* Estimation de la hauteur finale du header */
 }
 
 body {
@@ -167,25 +170,30 @@ a:hover {
 
 #site-header {
     background-color: var(--color-dark); /* Garder le bleu très foncé pour un look pro */
-    padding: 8px 0; /* MODIFIÉ: Encore plus réduit pour un menu très compact */
+    padding: 8px 0; /* Encore plus réduit pour un menu très compact */
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
     box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    /* Ajout d'une hauteur minimale pour s'assurer qu'elle est cohérente */
+    min-height: var(--header-height);
+    display: flex; /* Utiliser flexbox pour centrer le contenu verticalement */
+    align-items: center;
 }
 
 #site-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%; /* S'assurer que le conteneur prend toute la largeur disponible */
 }
 
 #site-header .logo {
     color: var(--color-white);
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.6em; /* MODIFIÉ: Taille de police du logo encore plus réduite */
+    font-size: 1.6em; /* Taille de police du logo encore plus réduite */
     font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -200,15 +208,15 @@ a:hover {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 20px; /* MODIFIÉ: Espacement fixe pour un contrôle précis */
+    gap: 20px; /* Espacement fixe pour un contrôle précis */
 }
 
 #site-header nav ul li a {
-    color: #aebfd6; /* MODIFIÉ: Couleur des liens par défaut, légèrement plus claire que le fond */
+    color: #aebfd6; /* Couleur des liens par défaut, légèrement plus claire que le fond */
     text-decoration: none;
-    padding: 5px 12px; /* MODIFIÉ: Padding très réduit pour les liens */
-    font-size: 0.85em; /* MODIFIÉ: Taille de police des liens très réduite */
-    font-weight: 600; /* MODIFIÉ: Ajout d'un poids de police pour la clarté */
+    padding: 5px 12px; /* Padding très réduit pour les liens */
+    font-size: 0.85em; /* Taille de police des liens très réduite */
+    font-weight: 600; /* Ajout d'un poids de police pour la clarté */
     transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
     border-radius: var(--border-radius); /* Conserver les bords arrondis pour la modernité */
 }
@@ -235,7 +243,8 @@ a:hover {
     justify-content: center;
     min-height: 100vh;
     position: relative;
-    padding-top: 50px; /* MODIFIÉ: Ajusté pour compenser la hauteur très réduite du header */
+    /* MODIFIÉ: Utilise la variable --header-height pour compenser la hauteur du menu */
+    padding-top: var(--header-height);
 }
 
 #hero::before {
@@ -578,31 +587,39 @@ a:hover {
     .section-padding { padding: var(--spacing-md) 0; }
 
     /* Header et Navigation (Passage au mode colonne) */
+    #site-header {
+        min-height: auto; /* Supprimer la hauteur minimale fixe en mode mobile */
+        padding: var(--spacing-sm) 0; /* Plus de padding pour le mobile */
+        flex-direction: column; /* Laisser flex-direction sur le header pour centrer */
+    }
+
     #site-header .container {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 10px; /* MODIFIÉ: Espacement plus petit en mode mobile */
+        gap: 10px; /* Espacement plus petit en mode mobile */
     }
     #site-header nav ul {
         flex-direction: column;
         width: 100%;
         justify-content: center;
-        margin-top: 5px; /* MODIFIÉ: Marge plus petite en mode mobile */
+        margin-top: 5px; /* Marge plus petite en mode mobile */
     }
     #site-header nav ul li {
         width: 100%;
         text-align: center;
     }
     #site-header nav ul li a {
-        padding: 5px 0; /* MODIFIÉ: Padding très réduit pour les liens en mode mobile */
+        padding: 5px 0; /* Padding très réduit pour les liens en mode mobile */
         display: block;
-        font-size: 0.85em; /* MODIFIÉ: Taille de police des liens très réduite en mode mobile */
+        font-size: 0.85em; /* Taille de police des liens très réduite en mode mobile */
     }
 
     /* Hero Section */
     #hero {
         min-height: 70vh;
+        /* Revoir padding-top pour mobile car le header est plus grand en colonne */
+        padding-top: 150px; /* Ajustement plus important pour compenser le header étendu en mobile */
     }
     #hero .hero-content {
         padding: var(--spacing-lg) var(--spacing-sm);
