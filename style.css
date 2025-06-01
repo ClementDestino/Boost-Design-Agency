@@ -168,7 +168,7 @@ a:hover {
 #site-header {
     /* Couleur de fond du header (bleu très foncé) */
     background-color: var(--color-dark);
-    padding: var(--spacing-sm) 0;
+    padding: 10px 0; /* MODIFIÉ: Réduit le padding vertical pour diminuer la hauteur */
     position: fixed;
     width: 100%;
     top: 0;
@@ -207,7 +207,7 @@ a:hover {
 #site-header nav ul li a {
     color: var(--color-white);
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 7px 15px; /* MODIFIÉ: Réduit le padding vertical des liens */
     transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
     border-radius: var(--border-radius);
 }
@@ -593,7 +593,7 @@ a:hover {
         text-align: center;
     }
     #site-header nav ul li a {
-        padding: 10px 0;
+        padding: 7px 0; /* MODIFIÉ: Réduit le padding vertical des liens en mode mobile */
         display: block;
     }
 
