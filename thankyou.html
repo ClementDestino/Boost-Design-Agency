@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci !</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        /* Styles spécifiques pour la page de remerciement, pour la centrer */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background-color: #f8f8f8; /* Fond légèrement gris, comme le site */
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            flex-direction: column; /* Pour centrer verticalement */
+        }
+        .thankyou-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 20px;
+        }
+        .thankyou-container h1 {
+            color: #28a745; /* Vert pour la confirmation */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif; /* Pour la cohérence avec les titres */
+        }
+        .thankyou-container p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        /* Style du bouton retour, en réutilisant btn-primary du style.css */
+        .thankyou-container .btn-primary {
+            text-decoration: none; /* Enlève le soulignement par défaut des liens */
+        }
+    </style>
+</head>
+<body>
+    <div class="thankyou-container">
+        <h1>🎉 Merci pour votre message !</h1>
+        <p>Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.</p>
+        <a href="./index.html" class="btn-primary">Retour à l'accueil</a>
+    </div>
+</body>
+</html>
