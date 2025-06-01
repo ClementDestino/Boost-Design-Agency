@@ -1,4 +1,4 @@
-/* style.css - Design moderne et Responsive (FINAL V5 - Correction Centrage Logo Mobile) */
+/* style.css - Design moderne et Responsive (FINAL V4 - Correction Complète) */
 
 /* ======================================= */
 /* ====== Import des Polices Google ====== */
@@ -185,7 +185,7 @@ a:hover {
 
 #site-header .container {
     display: flex;
-    justify-content: space-between; /* Logo à gauche, nav à droite sur desktop */
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
@@ -212,7 +212,7 @@ a:hover {
     padding: 10px;
     position: relative;
     z-index: 1001;
-    margin-right: 10px; /* Peut être ajusté si nécessaire */
+    margin-right: 10px;
 }
 
 .hamburger-menu .bar {
@@ -644,20 +644,13 @@ main {
 
     #site-header .container {
         flex-direction: row;
-        /* LOGO CENTRÉ SUR MOBILE ICI */
-        justify-content: center; /* Centrera le logo sur mobile */
-        position: relative; /* Nécessaire pour le positionnement absolu du hamburger */
+        justify-content: space-between;
         align-items: center;
     }
 
     /* Styles pour le bouton hamburger (visible seulement sur index.html) */
     #index-page .hamburger-menu {
         display: block; /* Affiche le hamburger sur la page d'accueil */
-        position: absolute; /* Positionne le hamburger pour ne pas interférer avec le centrage du logo */
-        right: var(--spacing-sm); /* Marge à droite du header */
-        top: 50%;
-        transform: translateY(-50%); /* Centrage vertical */
-        margin-right: 0; /* Annule la marge par défaut si elle existe */
     }
 
     /* Navigation principale (masquée par défaut sur mobile) */
@@ -677,7 +670,8 @@ main {
     /* Afficher la navigation quand la classe 'active' est présente (seulement sur index.html) */
     #index-page .main-nav ul.active {
         display: flex; /* Affiche les éléments en colonne */
-        /* Le top sera ajusté par le JS pour s'adapter à la hauteur du header déplié */
+        top: var(--desktop-header-height); /* Pour que le menu s'ouvre sous le header plein */
+        /* La hauteur du header change quand le menu s'ouvre, le JS s'en charge */
     }
 
     .main-nav ul li {
