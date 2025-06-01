@@ -168,7 +168,7 @@ a:hover {
 #site-header {
     /* Couleur de fond du header (bleu très foncé) */
     background-color: var(--color-dark);
-    padding: 10px 0; /* MODIFIÉ: Réduit le padding vertical pour diminuer la hauteur */
+    padding: 10px 0; /* Réduit le padding vertical pour diminuer la hauteur */
     position: fixed;
     width: 100%;
     top: 0;
@@ -186,7 +186,7 @@ a:hover {
 #site-header .logo {
     color: var(--color-white);
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.2em;
+    font-size: 1.8em; /* MODIFIÉ: Taille de police du logo réduite */
     font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -201,13 +201,14 @@ a:hover {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm); /* MODIFIÉ: Espacement réduit entre les liens de navigation */
 }
 
 #site-header nav ul li a {
     color: var(--color-white);
     text-decoration: none;
-    padding: 7px 15px; /* MODIFIÉ: Réduit le padding vertical des liens */
+    padding: 7px 15px; /* Réduit le padding vertical des liens */
+    font-size: 0.9em; /* MODIFIÉ: Taille de police des liens réduite */
     transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
     border-radius: var(--border-radius);
 }
@@ -233,7 +234,7 @@ a:hover {
     justify-content: center;
     min-height: 100vh;
     position: relative;
-    padding-top: 80px;
+    padding-top: 60px; /* MODIFIÉ: Ajusté pour compenser la hauteur réduite du header */
 }
 
 #hero::before {
@@ -593,8 +594,9 @@ a:hover {
         text-align: center;
     }
     #site-header nav ul li a {
-        padding: 7px 0; /* MODIFIÉ: Réduit le padding vertical des liens en mode mobile */
+        padding: 7px 0; /* Réduit le padding vertical des liens en mode mobile */
         display: block;
+        font-size: 0.9em; /* MODIFIÉ: Taille de police des liens réduite en mode mobile */
     }
 
     /* Hero Section */
