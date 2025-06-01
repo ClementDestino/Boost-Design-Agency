@@ -173,14 +173,12 @@
             const navMenu = document.querySelector('.main-nav ul');
             const header = document.getElementById('site-header');
             const heroSection = document.getElementById('hero');
-            const body = document.body; // Récupère la balise body
+            const body = document.body;
 
             function adjustHeroPadding() {
                 // Seulement si nous sommes sur la page d'accueil avec le menu hamburger
-                if (body.id === 'index-page') {
+                if (body.id === 'index-page' && heroSection) {
                     const headerHeight = header.offsetHeight;
-                    // Si le menu est ouvert, la hauteur du header sera plus grande
-                    // Le padding doit compenser la hauteur du header quand il est 'fixe'
                     heroSection.style.paddingTop = headerHeight + 'px';
                 }
             }
@@ -193,7 +191,7 @@
                     adjustHeroPadding(); // Ajuster après l'ouverture/fermeture
                 });
 
-                // Fermer le menu si on clique sur un lien
+                // Fermer le menu si on clique sur un lien (sur index.html)
                 navMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         if (navMenu.classList.contains('active')) {
@@ -208,6 +206,19 @@
             // Ajuster le padding au chargement et au redimensionnement (pour index.html)
             window.addEventListener('load', adjustHeroPadding);
             window.addEventListener('resize', adjustHeroPadding);
+
+            // Gérer le cas où on navigue depuis un lien interne vers index.html
+            // et que le hash est déjà présent dans l'URL.
+            if (window.location.hash && body.id === 'index-page') {
+                const targetElement = document.querySelector(window.location.hash);
+                if (targetElement) {
+                    const headerHeight = header.offsetHeight;
+                    window.scrollTo({
+                        top: targetElement.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            }
         });
     </script>
 </body>
