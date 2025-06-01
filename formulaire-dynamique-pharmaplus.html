@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaPlus - Formulaire Dynamique - Projet Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour les pages de projet */
+        .project-detail-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .project-detail-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-detail-container h1 {
+            font-size: 2.8em;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .project-detail-container h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center; /* Centré */
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-detail-container p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .project-tech-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            text-align: left;
+        }
+        .project-tech-list li {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .project-detail-container ul {
+            padding-left: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .project-detail-container ul li {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .project-links {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .project-links .btn-primary,
+        .project-links .btn-secondary {
+            margin: 0 15px;
+        }
+
+        .back-to-portfolio {
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+        .back-to-portfolio:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .back-to-portfolio::before {
+            content: '← ';
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .project-detail-container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+            .project-detail-container h1 {
+                font-size: 2em;
+            }
+            .project-detail-container h2 {
+                font-size: 1.5em;
+            }
+            .project-links .btn-primary,
+            .project-links .btn-secondary {
+                display: block;
+                width: 90%;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">Boost Design Agency</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#hero">Accueil</a></li>
+                    <li><a href="index.html#about">À Propos</a></li>
+                    <li><a href="index.html#skills">Compétences</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container project-detail-container">
+            <a href="index.html#portfolio" class="back-to-portfolio">Retour au Portfolio</a>
+
+            <h1>Projet : Formulaire Dynamique "PharmaPlus Services"</h1>
+
+            <img src="https://via.placeholder.com/800x500?text=Formulaire+Dynamique+PharmaPlus" alt="Capture d'écran du Formulaire Dynamique PharmaPlus">
+
+            <h2>Contexte et Objectif</h2>
+            <p>Ce projet s'inscrit dans la création d'un formulaire de contact et de prise de rendez-vous interactif pour "PharmaPlus Services", un client fictif dans le domaine de la santé. L'objectif était d'améliorer l'expérience utilisateur et la fiabilité des données collectées via un formulaire en ligne, en intégrant des fonctionnalités dynamiques et une validation côté client robuste.</p>
+
+            <h2>Démarche et Réalisation</h2>
+            <p>J'ai structuré le formulaire en HTML avec des champs sémantiques et accessibles. L'intégration de la validation côté client a été réalisée en utilisant JavaScript, permettant un feedback instantané à l'utilisateur lors de la saisie (vérification du format de l'email, des champs obligatoires, etc.).</p>
+            <p>Des champs conditionnels ont été mis en place pour adapter le formulaire aux choix de l'utilisateur, par exemple, afficher des options de date et d'heure uniquement si "Prise de rendez-vous" est sélectionné. Le CSS a été utilisé pour styliser le formulaire de manière claire et intuitive, avec des indicateurs visuels pour la validation.</p>
+
+            <h2>Technologies Utilisées</h2>
+            <ul class="project-tech-list">
+                <li>HTML5 (Structure sémantique du formulaire)</li>
+                <li>CSS3 (Stylisation et responsivité du formulaire)</li>
+                <li>JavaScript (Validation côté client, logique conditionnelle)</li>
+                <li>(Optionnel : FormSubmit.co pour l'envoi des données, si le backend n'est pas nécessaire)</li>
+            </ul>
+
+            <h2>Fonctionnalités Clés</h2>
+            <ul>
+                <li>Validation en Temps Réel : Vérification des entrées utilisateur avant soumission.</li>
+                <li>Messages d'Erreur Spécifiques : Guidance claire pour corriger les erreurs.</li>
+                <li>Champs Conditionnels : Adaptation du formulaire aux besoins de l'utilisateur.</li>
+                <li>Feedback Visuel : Indication du statut de chaque champ (valide/invalide).</li>
+                <li>Accessibilité : Formulaire conçu pour être utilisable par tous.</li>
+                <li>Design Responsif : Affichage optimal sur tous les appareils.</li>
+            </ul>
+
+            <div class="project-links">
+                <a href="#" target="_blank" class="btn-primary">Voir la Démo du Formulaire</a>
+                <a href="#" target="_blank" class="btn-secondary">Code Source (GitHub)</a>
+            </div>
+        </div>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Clément LOKOSSOU. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
