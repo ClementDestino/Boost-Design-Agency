@@ -1,4 +1,4 @@
-/* style.css - Design moderne et Responsive */
+/* style.css - Design moderne et Responsive (FINAL) */
 
 /* ======================================= */
 /* ====== Import des Polices Google ====== */
@@ -166,15 +166,15 @@ a:hover {
 /* ======================================= */
 
 #site-header {
-    /* Nouvelle couleur de fond pour le header */
-    background-color: var(--color-dark); /* Plus sombre et plus élégant */
+    /* Couleur de fond du header (bleu très foncé) */
+    background-color: var(--color-dark);
     padding: var(--spacing-sm) 0;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2); /* Ombre légèrement plus prononcée */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
 
 #site-header .container {
@@ -193,7 +193,7 @@ a:hover {
 }
 
 #site-header .logo:hover {
-    color: var(--color-primary); /* Met en avant le logo au survol */
+    color: var(--color-primary);
 }
 
 #site-header nav ul {
@@ -224,7 +224,7 @@ a:hover {
 /* ======================================= */
 
 #hero {
-    /* Nouvelle image aléatoire pour le fond */
+    /* Image de fond aléatoire pour le héro */
     background: url('https://source.unsplash.com/random/1920x1080?web-development,technology') no-repeat center center/cover;
     color: var(--color-white);
     text-align: center;
@@ -243,7 +243,7 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.65); /* Ombre légèrement plus opaque */
+    background-color: rgba(0,0,0,0.65);
     z-index: 1;
 }
 
@@ -428,7 +428,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* NOUVEAUX STYLES POUR LES LIENS SOCIAUX (ICÔNES) */
+/* Styles pour les liens sociaux (icônes) */
 .social-media-links ul {
     list-style: none;
     padding: 0;
