@@ -6,7 +6,7 @@
     <title>FitLife Club - Landing Page - Projet Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Styles spécifiques pour les pages de projet (copie de project-template.html) */
+        /* Styles spécifiques pour les pages de projet */
         .project-detail-container {
             max-width: 900px;
             margin: 60px auto;
@@ -15,7 +15,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             line-height: 1.8;
-            text-align: justify; /* Ajouté pour justifier le texte */
+            text-align: justify;
         }
 
         .project-detail-container img {
@@ -36,12 +36,13 @@
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
         }
+        /* Centrage des titres h2 */
         .project-detail-container h2 {
             font-size: 1.8em;
             color: #333;
             margin-top: 40px;
             margin-bottom: 20px;
-            text-align: left;
+            text-align: center; /* Modifié pour centrer */
             padding-bottom: 5px;
             border-bottom: 1px solid #eee;
         }
@@ -49,7 +50,7 @@
         .project-detail-container p {
             font-size: 1.1em;
             margin-bottom: 15px;
-            text-align: justify; /* Ajouté pour justifier le texte */
+            text-align: justify;
         }
 
         .project-tech-list {
@@ -60,6 +61,7 @@
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
+            text-align: left; /* Pour garder les éléments de liste alignés à gauche dans la liste */
         }
         .project-tech-list li {
             background-color: #e9ecef;
@@ -68,6 +70,17 @@
             border-radius: 20px;
             font-size: 0.9em;
             font-weight: bold;
+        }
+
+        /* Pour les listes à puces "Fonctionnalités Clés" */
+        .project-detail-container ul {
+            padding-left: 20px; /* Ajoute un peu de marge pour les puces */
+            margin-bottom: 30px;
+            text-align: left; /* Alignement du texte de la liste */
+        }
+        .project-detail-container ul li {
+            margin-bottom: 8px;
+            font-size: 1.1em;
         }
 
         .project-links {
@@ -172,7 +185,7 @@
 
     <footer id="site-footer">
         <div class="container">
-            <p>&copy; 2025 LOKOSSOU Clément. Tous droits réservés.</p>
+            <p>&copy; 2025 Clément LOKOSSOU. Tous droits réservés.</p>
         </div>
     </footer>
 </body>
