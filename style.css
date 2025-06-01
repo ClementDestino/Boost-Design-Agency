@@ -646,8 +646,8 @@ main {
         justify-content: center; /* Centrera les éléments */
         position: relative; /* Pour positionner le hamburger */
         align-items: center;
-        /* Ajout d'un padding horizontal pour laisser de la place au hamburger */
-        padding: 0 calc(var(--spacing-md) + 40px); /* Augmentez l'espace des côtés pour le hamburger */
+        /* Augmentez l'espace des côtés pour le hamburger */
+        padding: 0 var(--spacing-sm); /* Retour à un padding standard, nous allons gérer l'espace différemment */
     }
 
     /* Styles pour le bouton hamburger (visible seulement sur index.html) */
@@ -657,21 +657,27 @@ main {
         right: var(--spacing-sm); /* Marge à droite du header */
         top: 50%;
         transform: translateY(-50%); /* Centrage vertical */
-        margin-right: 0; /* Annule la marge par défaut si elle existe */
-        z-index: 1001; /* Assurez-vous qu'il soit au-dessus du logo si besoin */
+        margin-right: 0; 
+        z-index: 1001; 
     }
 
     /* Ajustement du logo pour s'assurer qu'il ne chevauche pas le hamburger */
     #site-header .logo {
-        position: relative;
-        /* Ajoutez une marge droite pour le logo quand le hamburger est à sa droite */
-        /* Ceci est un ajustement pour éviter le chevauchement avec le hamburger */
-        margin-right: 40px; /* Espace pour le hamburger */
+        /* On ne veut plus de marge-droite fixe qui pourrait pousser le texte */
+        /* La largeur maximale sera gérée par la taille de la police et le flexbox */
+        margin-right: 0; /* Annule la marge que vous aviez potentiellement mise */
         text-align: center; /* Pour centrer le texte du logo si c'est un block */
         white-space: nowrap; /* Empêche le texte de se casser sur plusieurs lignes */
-        overflow: hidden; /* Cache le texte si ça déborde (très peu probable avec nowrap) */
+        overflow: hidden; /* Cache le texte si ça déborde */
         text-overflow: ellipsis; /* Ajoute des points de suspension si ça déborde */
-        max-width: calc(100% - 120px); /* Réduit la largeur max pour laisser de la place au hamburger */
+        /* Nouvelle règle: Réduire la taille de la police du logo pour mobile */
+        font-size: 1.2em; /* Réduit la taille pour qu'elle tienne mieux */
+        /* Limite la largeur de l'élément logo pour éviter le chevauchement avec le hamburger */
+        /* Nous allons calculer cela dynamiquement pour laisser de l'espace */
+        max-width: calc(100% - (2 * var(--spacing-sm) + 60px)); /* Largeur totale du container - (2*padding) - (largeur hamburger + marge) */
+        /* 2 * var(--spacing-sm) : padding du container (gauche et droite)
+            60px : estimation de la largeur du bouton hamburger (25px bar + 2*10px padding + un peu de marge)
+        */
     }
 
     /* Navigation principale (masquée par défaut sur mobile) */
@@ -772,14 +778,39 @@ main {
         font-size: 1em;
     }
 
-    .contact-form input[type="text"],
-    .contact-form input[type="email"],
-    .contact-form textarea {
-        padding: 12px;
+    /* Ajustement supplémentaire de la taille de la police du logo pour les très petits écrans */
+    #site-header .logo {
+        font-size: 1em; /* Encore plus petit pour s'assurer que "Boost Design Agency" tienne */
+        max-width: calc(100% - (2 * var(--spacing-sm) + 50px)); /* Ajuste légèrement la largeur max si besoin */
     }
 
-    /* Ajustement spécifique pour les pages de projet sur très petit écran */
-    main {
-        padding-top: calc(var(--mobile-header-height) + 30px); /* Plus de padding sur très petit */
+    /* Ajustement de la taille du hamburger pour les très petits écrans si nécessaire */
+    #index-page .hamburger-menu {
+        right: 10px; /* Moins de marge pour le hamburger si l'écran est très étroit */
+        padding: 8px; /* Réduire un peu le padding du bouton */
+    }
+}
+
+/* --- Ajout de règles pour la navigation sur les pages de projet (pas seulement index.html) --- */
+/* Pour que le menu burger ne soit pas actif sur les pages de projet (où il n'y a pas de menu à ouvrir) */
+/* Et s'assurer que le logo est centré sans la complexité du burger */
+@media (max-width: 768px) {
+    body:not(#index-page) #site-header .container {
+        justify-content: center; /* Centrer le logo sur les pages de projet */
+        padding: 0 var(--spacing-sm); /* Retour à un padding simple */
+    }
+
+    body:not(#index-page) #site-header .logo {
+        font-size: 1.2em; /* La même taille que sur index.html pour la cohérence */
+        max-width: 100%; /* Le logo peut prendre toute la largeur disponible (moins les paddings) */
+        margin-right: 0; /* Pas de marge pour le hamburger qui n'existe pas */
+    }
+
+    body:not(#index-page) .hamburger-menu {
+        display: none; /* Cache le hamburger sur les pages qui ne sont PAS index.html */
+    }
+
+    body:not(#index-page) .main-nav ul {
+        display: none; /* Cache complètement la navigation sur les pages de projet */
     }
 }
